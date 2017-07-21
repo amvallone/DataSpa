@@ -1,21 +1,20 @@
 #' @name getbase.paro
-#' @rdname getbase
+#' @rdname getbase.paro
 #'
 #' @title Collect information of municipality unemploymet.
 #'
 #' @description Download the work force data of the province`s municipalities corresponding to the required. 
 #'
 #' @param year A numerical value between 2005 and the current year indicating the year of the required data.
-#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.#' @param provinicia one of the 52 Spain`s province.#'
-#' @return a file host in \cod{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
+#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.#' @param provincia one of the 52 Spain’s province.#'
+#' @return a file host in \code{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
 #' 
 #' @examples
-#' getbase.paro(2005,julio,”Madrid”)
+#' getbase.paro(2005,”julio”,”Madrid”)
 #'
 #' @export
 
 getbase.paro<-function(year,mes,provincia){
-	require(stringr)
 	provincia<-toupper(provincia)
 	year<-as.character(year)
 	if(dir.exists(file.path(getwd(),"data_paro"))==FALSE){
