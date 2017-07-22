@@ -1,3 +1,7 @@
+#' @importFrom utils download.file
+#' @importFrom stringr str_detect str_replace_all
+#' @import openxlsx
+#' @import stringi
 #' @name getbase.fen
 #' @rdname getbase.fen
 #'

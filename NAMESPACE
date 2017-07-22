@@ -3,3 +3,8 @@
 export(getbase.fen)
 export(getbase.paro)
 export(getbase.pob)
+import(openxlsx)
+import(stringi)
+importFrom(stringr,str_detect)
+importFrom(stringr,str_replace_all)
+importFrom(utils,download.file)
