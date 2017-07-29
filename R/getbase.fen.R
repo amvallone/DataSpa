@@ -1,7 +1,8 @@
 #' @importFrom utils download.file
 #' @importFrom stringr str_detect str_replace_all
-#' @import openxlsx
 #' @import stringi
+#' @importFrom openxlsx read.xlsx
+#' @import readxl
 #' @name getbase.fen
 #' @rdname getbase.fen
 #'
@@ -13,7 +14,7 @@
 #' @param provincia one of the 52 Spain’s province.
 #'
 #'
-#' @return a file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}. 
+#' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}. 
 #' @examples
 #' getbase.fen(2005,”Madrid”)
 #'

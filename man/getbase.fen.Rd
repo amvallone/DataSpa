@@ -12,7 +12,7 @@ getbase.fen(year, provincia)
 \item{provincia}{one of the 52 Spain’s province.}
 }
 \value{
-a file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}.
+a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}.
 }
 \description{
 Download the population phenomena data of the province`s municipalities corresponding to the required.

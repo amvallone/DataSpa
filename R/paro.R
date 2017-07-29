@@ -1,3 +1,4 @@
+#'
 #' @name paro
 #' @rdname paro
 #'
@@ -48,8 +49,8 @@ paro<-function(year,mes="julio",provincia){
 		}
 		open<-paste(dirc,file1,sep="")
 		abre<-paste(dirc,file,sep="")
-		datos<-read.xlsx(abre,1)
-		idn<-read.xlsx(open,1,colIndex=c(1:3))
+		datos<-readxl::read_excel(abre,1)
+		idn<-readxl::read_excel(open,1,range = cell_cols("A:C"))
 		datos<-apply(datos,2,as.character)
 		idn<-apply(idn,2,as.character)
 		datos<-datos[-dim(datos)[1],]
@@ -96,7 +97,7 @@ paro<-function(year,mes="julio",provincia){
 		salida
 	} else {
 		abre<-paste(dirc,file,sep="")
-		datos<-read.xlsx(abre,1)
+		datos<-readxl::read_excel(abre,1)
 		datos<-apply(datos,2,as.character)
 		datos<-datos[-dim(datos)[1],]
 		p<-max(which(is.na(datos[,1])))+1

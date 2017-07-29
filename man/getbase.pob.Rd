@@ -16,7 +16,7 @@ getbase.pob(year, provincia, extr = FALSE, anual = FALSE)
 \item{anual}{logical variable, is data required by age? FALSE is the default value.}
 }
 \value{
-a file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
+a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
 }
 \description{
 Download the population data of the province`s municipalities corresponding to the required.
