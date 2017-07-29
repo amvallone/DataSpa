@@ -3,6 +3,7 @@
 export(getbase.fen)
 export(getbase.paro)
 export(getbase.pob)
+export(paro)
 import(openxlsx)
 import(stringi)
 importFrom(stringr,str_detect)
