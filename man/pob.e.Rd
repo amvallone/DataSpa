@@ -17,7 +17,7 @@ a list containing a total population data frame and the population grouped by se
 		\item \code{cod} is the municipality identification number based in the INE codification.
 	\item \code{Name} the municipality name.
 		\item \code{Total} total municipality population
-		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old
+		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old grouped by total population, foreign population and national population.
 }
 }
 \description{

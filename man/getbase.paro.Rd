@@ -19,7 +19,14 @@ a file host in \code{data_paro} folder into the working directory wtih name \cod
 \description{
 Download the work force data of the province`s municipalities corresponding to the required.
 }
+\details{
+the possible mes value are: "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre" and "diciembre"
+
+You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+
+"ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA"and"MELILLA"
+}
 \examples{
-getbase.paro(2005,”julio”,”Madrid”)
+getbase.paro(2005,"julio","Madrid")
 
 }

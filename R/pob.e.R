@@ -12,7 +12,7 @@
 #' 		\item \code{cod} is the municipality identification number based in the INE codification.
 #'		\item \code{Name} the municipality name.
 #' 		\item \code{Total} total municipality population
-#' 		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old
+#' 		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old grouped by total population, foreign population and national population.
 #'	}
 #'
 #' @example
@@ -24,12 +24,7 @@ pob.e<-function(year,provincia){
 		year<-as.character(year)
 		provincia<-toupper(provincia)
 		prov<-provincia
-		if(str_detect(provincia," ")==TRUE){
-		provincia<-str_replace_all(provincia," ","_")
-		}
-	    if(str_detect(provincia,"Ñ")==TRUE){
-		provincia<-str_replace_all(provincia,"Ñ","N")
-		}
+		provincia<-a.letter(provincia)
 		dirc<-paste(getwd(),"/data_poblacion/",sep="")
 		file<-paste(paste("pob_e",year,provincia,sep="_"),".xlsx",sep="")
 		if(sum(dir(dirc)==file)==0){
@@ -55,7 +50,7 @@ pob.e<-function(year,provincia){
 		salida[,1]<-as.character(salida[,1])
 		salida[,2]<-as.character(salida[,2])
 		salida[,3:dim(salida)[2]]<-apply(salida[,3:dim(salida)[2]],2,as.numeric.factor)
-		fila<-c("Cod","Municipio","Total","Total Menores de 16 años","Total De 16 a 64 años","Total De 65 y más años", "Total Esp","Esp Menores de 16 años","Esp De 16 a 64 años","Esp De 65 y más años","Total Extr","Extr Menores de 16 años","Extr De 16 a 64 años","Extr De 65 y más años")
+		fila<-c("Cod","Municipio","Total","Total Menores de 16 a\u00F1os","Total De 16 a 64 a\u00F1os","Total De 65 y mas a\u00F1os", "Total Esp","Esp Menores de 16 a\u00F1os","Esp De 16 a 64 a\u00F1os","Esp De 65 y mas a\u00F1os","Total Extr","Extr Menores de 16 a\u00F1os","Extr De 16 a 64 a\u00F1os","Extr De 65 y mas a\u00F1os")
 		colnames(salida)<-fila
 		dd<-h-t-1
 		s.t<-salida[t:(h-1),]

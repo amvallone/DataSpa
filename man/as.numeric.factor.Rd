@@ -19,10 +19,3 @@ trasnform a vector of factor into a numerical vector
 name as.numeric.factor
 rdname extras
 }
-\examples{
-
-x<- sample( LETTERS[1:4], 1000, replace=TRUE, prob=c(0.1, 0.2, 0.65, 0.05) )
-x<-as.factor(x)
-x<-as.numeric.factor(x)
-class(x)
-}

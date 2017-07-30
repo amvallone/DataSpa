@@ -25,6 +25,6 @@ data frame containing the fallowing variables.
 Import the work force data of the province`s municipalities corresponding to the required.
 }
 \examples{
-paro(2005,”julio”,”Madrid”)
+#paro(2005,"julio","Madrid")
 
 }

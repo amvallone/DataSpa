@@ -27,12 +27,7 @@ pob.a<-function(year,provincia){
 		if(as.numeric(year)<2011) stop("No existe datos para estos casos")
 		provincia<-toupper(provincia)
 		prov<-provincia
-		if(str_detect(provincia," ")==TRUE){
-		provincia<-str_replace_all(provincia," ","_")
-		}
-	    if(str_detect(provincia,"Ñ")==TRUE){
-		provincia<-str_replace_all(provincia,"Ñ","N")
-		}
+		provincia<-a.letter(provincia)
 		dirc<-paste(getwd(),"/data_poblacion/",sep="")
 		file<-paste(paste("pob_a",year,provincia,sep="_"),".xlsx",sep="")
 		if(sum(dir(dirc)==file)==0){

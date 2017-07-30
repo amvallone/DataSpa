@@ -10,23 +10,23 @@
 #' @return a file host in \code{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
 #' 
 #' @examples
-#' getbase.paro(2005,”julio”,”Madrid”)
+#' getbase.paro(2005,"julio","Madrid")
+#'
+#' @details the possible mes value are: "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre" and "diciembre"
+#' 
+#'	You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+#'
+#' "ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA"and"MELILLA"
 #'
 #' @export
 
 getbase.paro<-function(year,mes,provincia){
-	provincia<-toupper(provincia)
 	year<-as.character(year)
 	if(dir.exists(file.path(getwd(),"data_paro"))==FALSE){
 		dir.create(file.path(getwd(),"data_paro"))
 		}
 	provincia<-toupper(provincia)
-	if(str_detect(provincia," ")==TRUE){
-		provincia<-str_replace_all(provincia," ","_")
-		}
-	if(str_detect(provincia,"Ñ")==TRUE){
-		provincia<-str_replace_all(provincia,"Ñ","N")
-		}
+	provincia<-a.letter(provincia)
 	mes<-tolower(mes)
 	nn.mes<-seq(1,12,1)
 	names(nn.mes)<-c("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")

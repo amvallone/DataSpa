@@ -14,7 +14,7 @@
 #' - \code{cod} is the municipality identification number based in the INE codification.#' - \code{Name} the municipality name.#' - \code{Total unemployment} number of unemployed people in the municipality #' - \code{Total male unemployment} number of unemployes males in the municipality#' - \code{Total female unemployment} number of unemployees females in the municipality
 #'
 #' @examples
-#' paro(2005,”julio”,”Madrid”)
+#' #paro(2005,"julio","Madrid")
 #'
 #' @export
 
@@ -24,12 +24,7 @@ paro<-function(year,mes="julio",provincia){
 	year<-as.character(year)
 	Cap<-provincia
 	provincia<-toupper(provincia)
-	if(str_detect(provincia," ")==TRUE){
-		provincia<-str_replace_all(provincia," ","_")
-		}
-	if(str_detect(provincia,"Ñ")==TRUE){
-		provincia<-str_replace_all(provincia,"Ñ","N")
-		}
+	provincia<-a.letter(provincia)
 	mes<-tolower(mes)
 	nn.mes<-seq(1,12,1)
 	names(nn.mes)<-c("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
