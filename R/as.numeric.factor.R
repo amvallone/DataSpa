@@ -9,7 +9,7 @@
 #'
 #' @return a numerical vector
 #'
-#' @example
+#' @examples
 #'
 #' x<- sample( LETTERS[1:4], 1000, replace=TRUE, prob=c(0.1, 0.2, 0.65, 0.05) )
 #' x<-as.factor(x)

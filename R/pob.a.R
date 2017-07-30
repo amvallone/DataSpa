@@ -1,23 +1,30 @@
-#' @importFrom stringr str_trim
-#' @name pob.q
-#' @rdname pob.q
+#' @name pob.a
+#' @rdname pob.a
 #'
-#' @title  Population grouped by quinquennials age data
-#' @description import into R the  population grouped by quinquennials age group data
+#' @title  Population grouped by age data
+#' @description import into R the  population grouped by age data
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.#' @param provincia one of the 52 Spain`s province.
+#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
+#' @param provincia one of the 52 Spain`s province.
 #'
 #' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
-#' \itemize{#' 		\item \code{cod} is the municipality identification number based in the INE codification.#'		\item \code{Name} the municipality name.#' 		\item \code{Total} total municipality population#' 		\item 21 variables containing the population by quinquennials age group
+#'
+#' \itemize{
+#' 		\item \code{cod} is the municipality identification number based in the INE codification.
+#'		\item \code{Name} the municipality name.
+#' 		\item \code{Total} total municipality population
+#' 		\item  101 variables containing the population grouped by age
 #'	}
 #'
 #' @example
-#' pob.q(2016,"Madrid")
+#' pob.a(2016,"Madrid")
 #'
 #' @export
 
-pob.q<-function(year,provincia){
+
+pob.a<-function(year,provincia){
 		year<-as.character(year)
+		if(as.numeric(year)<2011) stop("No existe datos para estos casos")
 		provincia<-toupper(provincia)
 		prov<-provincia
 		if(str_detect(provincia," ")==TRUE){
@@ -27,12 +34,12 @@ pob.q<-function(year,provincia){
 		provincia<-str_replace_all(provincia,"Ñ","N")
 		}
 		dirc<-paste(getwd(),"/data_poblacion/",sep="")
-		file<-paste(paste("pob_q",year,provincia,sep="_"),".xlsx",sep="")
+		file<-paste(paste("pob_a",year,provincia,sep="_"),".xlsx",sep="")
 		if(sum(dir(dirc)==file)==0){
-			getbase.pob(year,provincia)
+			getbase.pob(year,provincia,anual=TRUE)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-as.data.frame(readxl::read_excel(abre)) #no more Java dependencies!!!
+		datos<-as.data.frame(readxl::read_excel(abre))
 		d<-dim(datos)
 		t<-which(datos[,1]=="Ambos sexos")
 		h<-which(datos[,1]=="Hombres")
@@ -45,18 +52,10 @@ pob.q<-function(year,provincia){
 		nombres<-as.character(datos[,1])
 		codigo<-rep("AA",d[1])
 		municipio<-rep("AA",d[1])
-		if (as.numeric(year)<2006){
-			for (i in 1:d[1]){
-			nn<-unlist(strsplit(nombres[i]," "))
-			codigo[i]<-str_trim(nn[5])
-			municipio[i]<-str_trim(nn[6])
-			}
-		} else {
-			for (i in 1:d[1]){
+		for (i in 1:d[1]){
 			nn<-unlist(strsplit(nombres[i],"-"))
 			codigo[i]<-str_trim(nn[1])
 			municipio[i]<-str_trim(nn[2])
-			}
 		}
 		salida<-cbind(codigo,municipio,edades)
 		salida[,1]<-as.character(salida[,1])
@@ -70,4 +69,3 @@ pob.q<-function(year,provincia){
 		names(out)<-c("Ambos Sexos","Hombre","Mujeres")
 		out
 }
-
