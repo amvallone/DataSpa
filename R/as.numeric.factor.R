@@ -8,7 +8,17 @@
 #' @param x a factor vector
 #'
 #' @return a numerical vector
+<<<<<<< HEAD
 
 
+=======
+#'
+#' @example
+#'
+#' x<- sample( LETTERS[1:4], 1000, replace=TRUE, prob=c(0.1, 0.2, 0.65, 0.05) )
+#' x<-as.factor(x)
+#' x<-as.numeric.factor(x)
+#' class(x)
+>>>>>>> parent of bbacfed... all loading function added
 
 as.numeric.factor <- function(x) {as.numeric(as.character(x))}

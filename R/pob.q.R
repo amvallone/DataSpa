@@ -2,14 +2,12 @@
 #' @name pob.q
 #' @rdname pob.q
 #'
-#' @title  Population grouped by quinquennials age data
-#' @description import into R the  population grouped by quinquennials age group data
+#' @title  Population by quinquennials age group data
+#' @description import into R the  population by quinquennials age group data
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.#' @param provincia one of the 52 Spain`s province.
 #'
-#' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
-#' \itemize{#' 		\item \code{cod} is the municipality identification number based in the INE codification.#'		\item \code{Name} the municipality name.#' 		\item \code{Total} total municipality population#' 		\item 21 variables containing the population by quinquennials age group
-#'	}
+#' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: #' - \code{cod} is the municipality identification number based in the INE codification.#'	- \code{Name} the municipality name.#' - \code{Total} total municipality population#' - 21 variables containing the population by quinquennials age group
 #'
 #' @example
 #' pob.q(2016,"Madrid")

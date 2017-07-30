@@ -2,7 +2,7 @@
 % Please edit documentation in R/pob.q.R
 \name{pob.q}
 \alias{pob.q}
-\title{Population grouped by quinquennials age data}
+\title{Population by quinquennials age group data}
 \usage{
 pob.q(year, provincia)
 }
@@ -13,13 +13,11 @@ pob.q(year, provincia)
 }
 \value{
 a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
-\itemize{
-		\item \code{cod} is the municipality identification number based in the INE codification.
-	\item \code{Name} the municipality name.
-		\item \code{Total} total municipality population
-		\item 21 variables containing the population by quinquennials age group
-}
+- \code{cod} is the municipality identification number based in the INE codification.
+- \code{Name} the municipality name.
+- \code{Total} total municipality population
+- 21 variables containing the population by quinquennials age group
 }
 \description{
-import into R the  population grouped by quinquennials age group data
+import into R the  population by quinquennials age group data
 }
