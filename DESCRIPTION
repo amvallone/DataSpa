@@ -8,7 +8,7 @@ Depends: R (>= 3.1),
 		stringi,
 		utils,
 		readxl,
-		openxlsx
+		xlsx
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

@@ -8,10 +8,6 @@
 #' @param x a factor vector
 #'
 #' @return a numerical vector
-<<<<<<< HEAD
-
-
-=======
 #'
 #' @example
 #'
@@ -19,6 +15,6 @@
 #' x<-as.factor(x)
 #' x<-as.numeric.factor(x)
 #' class(x)
->>>>>>> parent of bbacfed... all loading function added
+
 
 as.numeric.factor <- function(x) {as.numeric(as.character(x))}
