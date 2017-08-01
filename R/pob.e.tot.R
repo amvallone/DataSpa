@@ -9,7 +9,7 @@
 #'
 #' @return a  data frame conatining the municipality total foreign population 
 #'
-#' @example
+#' @examples
 #' pob.e.tot(2016,"Madrid")
 #'
 #' @export
@@ -25,7 +25,7 @@ pob.e.tot<-function(year,provincia){
 			getbase.pob(year,provincia,extr=TRUE)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-as.data.frame(readxl::read_excel(abre,range=cell_cols(c(1,4,5,10,11))))
+		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,4,5,10,11))
 		d<-dim(datos)
 		nombres<-as.character(datos[,1])
 		codigo<-rep("AA",d[1])
@@ -62,5 +62,7 @@ pob.e.tot<-function(year,provincia){
 			} else {
 				s.t<-salida[t:(h-1),c(1,2,5)]
 			}
-		s.t[-1,]
+		s.t<-s.t[-1,]
+		s.t[1,2]<-"Todos"
+		s.t
 }

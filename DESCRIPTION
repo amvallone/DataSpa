@@ -7,7 +7,6 @@ Depends: R (>= 3.1),
 		stringr,
 		stringi,
 		utils,
-		readxl,
 		xlsx
 License: GPL-2
 Encoding: UTF-8

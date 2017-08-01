@@ -1,8 +1,7 @@
 #' @importFrom utils download.file
 #' @importFrom stringr str_detect str_replace_all
 #' @import stringi
-#' @importFrom xlsx read.xlsx
-#' @import readxl
+#' @import xlsx
 #' @name getbase.fen
 #' @rdname getbase.fen
 #'

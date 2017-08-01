@@ -25,7 +25,7 @@ pob.tot<-function(year,provincia){
 			getbase.pob(year,provincia)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-as.data.frame(readxl::read_excel(abre,range = cell_cols(c(1:4))))
+		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1:4))
 		d<-dim(datos)
 		nombres<-as.character(datos[,1])
 		codigo<-rep("AA",d[1])
@@ -55,5 +55,7 @@ pob.tot<-function(year,provincia){
 		fila<-c("Cod","Municipio","Total")
 		colnames(salida)<-fila
 		s.t<-salida[t:(h-1),1:3]
-		s.t[-1,]
+		s.t<-s.t[-1,]
+		s.t[1,2]<-"Todos"
+		s.t
 }

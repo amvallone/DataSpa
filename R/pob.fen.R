@@ -30,7 +30,7 @@ pob.fen<-function(year,provincia){
 			getbase.fen(year,provincia)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-as.data.frame(readxl::read_excel(abre,range=cell_cols(c(1,2,5))))
+		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,2,5))
 		datos<-datos[which(complete.cases(datos)==TRUE),]
 		datos<-datos[-1,]
 		d<-dim(datos)
