@@ -5,7 +5,7 @@
 #' @title  Principal municiplaity puplation phenomena
 #' @description import into R the principal population phenomena 
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
+#' @param year A numerical value between 1996 and 2015 year indicating the year of the required data.
 #' @param provincia one of the 52 Spain`s province.
 #'
 #' @return a  data frame conatining the principal population phenomena 
@@ -14,7 +14,7 @@
 #'	}
 #'
 #' @examples
-#' pob.fen(2016,"Madrid")
+#' pob.fen(2012,"Madrid")
 #'
 #' @export
 
