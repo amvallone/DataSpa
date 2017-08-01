@@ -16,7 +16,7 @@
 #' 		\item  101 variables containing the population grouped by age
 #'	}
 #'
-#' @example
+#' @examples
 #' pob.a(2016,"Madrid")
 #'
 #' @export

@@ -9,7 +9,7 @@
 #'
 #' @return a  data frame conatining the municipality total population 
 #'
-#' @example
+#' @examples
 #' pob.tot(2016,"Madrid")
 #'
 #' @export

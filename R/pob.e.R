@@ -15,7 +15,7 @@
 #' 		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old grouped by total population, foreign population and national population.
 #'	}
 #'
-#' @example
+#' @examples
 #' pob.e(2016,"Madrid")
 #'
 #' @export

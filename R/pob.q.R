@@ -9,7 +9,7 @@
 #'
 #' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: #' - \code{cod} is the municipality identification number based in the INE codification.#'	- \code{Name} the municipality name.#' - \code{Total} total municipality population#' - 21 variables containing the population by quinquennials age group
 #'
-#' @example
+#' @examples
 #' pob.q(2016,"Madrid")
 #'
 #' @export

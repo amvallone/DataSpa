@@ -21,3 +21,7 @@ a list containing a total population data frame and the population grouped by se
 \description{
 import into R the  population by quinquennials age group data
 }
+\examples{
+pob.q(2016,"Madrid")
+
+}

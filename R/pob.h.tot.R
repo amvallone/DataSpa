@@ -9,7 +9,7 @@
 #'
 #' @return a  data frame conatining the municipality total male population 
 #'
-#' @example
+#' @examples
 #' pob.h.tot(2016,"Madrid")
 #'
 #' @export

@@ -23,3 +23,7 @@ a list containing a total population data frame and the population grouped by se
 \description{
 import into R the  population grouped by nationality and sex data
 }
+\examples{
+pob.e(2016,"Madrid")
+
+}

@@ -13,7 +13,7 @@
 #'		\item \code{Birth} number of birth in the municipality#'		\item \code{Deaths} Number of death in the municipality 
 #'	}
 #'
-#' @example
+#' @examples
 #' pob.fen(2016,"Madrid")
 #'
 #' @export
