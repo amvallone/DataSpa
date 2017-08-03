@@ -1,7 +1,9 @@
-#' @importFrom utils download.file
-#' @importFrom stringr str_detect str_replace_all
+#' @importFrom utils download.file capture.output read.table
+#' @import stringr 
 #' @import stringi
 #' @import xlsx
+#' @import rvest
+#' @importFrom xml2 read_html
 #' @name getbase.fen
 #' @rdname getbase.fen
 #'
