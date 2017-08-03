@@ -20,6 +20,6 @@ A data frame
 Collect the municipality vehicle fleet information
 }
 \examples{
-parque.aut(2014,"Ceuta y Melilla","Ceuta")
+\dontrun{parque.aut(2014,"Ceuta y Melilla","Ceuta")}
 
 }
