@@ -9,6 +9,7 @@ Depends: R (>= 3.1),
 		utils,
 		rvest,
 		xml2,
+		stats,
 		xlsx
 License: GPL-2
 Encoding: UTF-8

@@ -10,9 +10,7 @@
 #'
 #' @return A data frame
 #'
-#' @details 
-#'
-#' \code{ca} may asume one of these value: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias", "Castilla y Leon", "Castilla-La Mancha", "Catalu\u00F1a", "Cunitat Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
+#' @details \code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias", "Castilla y Leon", "Castilla-La Mancha", "Catalu\u00F1a", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
 #' 
 #' For more detail information about Spanish Autonomus Comunities and provincies visit \href{https://es.wikipedia.org/wiki/Anexo:Provincias_y_ciudades_aut%C3%B3nomas_de_Espa%C3%B1a}{Wikipedia Anexo}
 #' @examples

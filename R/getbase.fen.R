@@ -4,6 +4,8 @@
 #' @import xlsx
 #' @import rvest
 #' @importFrom xml2 read_html
+#' @importFrom stats na.omit
+#'
 #' @name getbase.fen
 #' @rdname getbase.fen
 #'
