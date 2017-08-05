@@ -35,5 +35,5 @@ getbase.paro<-function(year,mes,provincia){
 	url<-paste("http://www.sepe.es/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/municipios/",year,"/",paste(mes,year,sep="_"),"/",name,sep="")
 	dir<-paste(getwd(),"/data_paro/",sep="")
 	file<-paste(dir,"paro_",name,sep="")
-	download.file(url,file)
+	download.file(url,file, mode='wb')
 }
