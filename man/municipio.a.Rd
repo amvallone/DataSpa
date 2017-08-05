@@ -17,6 +17,6 @@ no me acuerdo
 Generate a list muncipalities URLs in Axesor self-employment data base
 }
 \examples{
-municipio("http://www.axesor.es/informe-de-autonomos/")
+\dontrun{municipio("http://www.axesor.es/informe-de-autonomos/")}
 
 }

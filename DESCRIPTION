@@ -1,16 +1,13 @@
 Package: DataSpa
 Title: Collect Spanish data at municipality level
-Version: 0.0.0.9000
+Version: 0.0.0.1
 Authors@R: person("Andres","Vallone",email="avallone@ucn.cl", role=c("aut","cre"))
 Description: Collect data from different sources for Spanish municipalities.
 Depends: R (>= 3.1),
 		stringr,
-		stringi,
-		utils,
 		rvest,
-		xml2,
-		stats,
 		xlsx
+Imports: XML, stringi, xml2
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

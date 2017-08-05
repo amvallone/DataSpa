@@ -12,7 +12,7 @@
 #' @details for variable contained in the data frame see XX 
 #'
 #' @examples
-#' \dontrun{empresa.a("https://autonomos.axesor.es//informe-de-autonomo/autonomo/Moussa-Gassa/5912075")}
+#' empresa.a("https://autonomos.axesor.es//informe-de-autonomo/autonomo/Moussa-Gassa/5912075")
 #'
 #' @export 
 

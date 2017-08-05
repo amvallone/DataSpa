@@ -1,10 +1,11 @@
 #' @importFrom utils download.file capture.output read.table
 #' @import stringr 
-#' @import stringi
 #' @import xlsx
 #' @import rvest
 #' @importFrom xml2 read_html
 #' @importFrom stats na.omit
+#' @importFrom XML htmlParse
+#' @importFrom stringi stri_count
 #'
 #' @name getbase.fen
 #' @rdname getbase.fen

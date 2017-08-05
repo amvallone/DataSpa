@@ -10,7 +10,7 @@
 #' @return no me acuerdo
 #'
 #' @examples
-#' municipio("http://www.axesor.es/informe-de-autonomos/")
+#' \dontrun{municipio("http://www.axesor.es/informe-de-autonomos/")}
 #'
 #' @export
 
