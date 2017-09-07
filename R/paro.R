@@ -89,6 +89,13 @@ paro<-function(year,mes="julio",provincia){
 		salida[nd,3]<-sum(salida[1:nd-1,3])
 		salida[nd,4]<-sum(salida[1:nd-1,4])
 		salida[nd,5]<-sum(salida[1:nd-1,5])
+		fallas<-apply(as.matrix(salida[,1]),1,nchar)
+		n.fallas<-which(fallas!=5)
+		if (length(n.fallas)!=0){
+			for (i in seq_along(n.fallas)){
+				salida[n.fallas[i],1]<-codifica(salida[n.fallas[i],2],provincia)
+			}
+		}
 		salida
 	} else {
 		abre<-paste(dirc,file,sep="")

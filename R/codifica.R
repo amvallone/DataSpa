@@ -13,10 +13,10 @@ codifica<-function(x,provincia){
 		names(p)<-c("ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORU\u00D1A","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA","MELILLA")
 		buscar<-subset(mun,mun[,1]==p[provincia])
 		x<-simpleCap(x)
-		e<-agrep(x,buscar[,3])
+		e<-agrep(x,buscar[,4])
 		salida<-buscar[e,]
 		if (length(e)>1){
-			s<-subset(buscar[e,],buscar[e,3]==x)
+			s<-subset(buscar[e,],buscar[e,4]==x)
 			if (dim(s)[1]==0){
 				salida<-salida[which(duplicated(salida[,2])==TRUE),]
 			} else{
@@ -26,11 +26,11 @@ codifica<-function(x,provincia){
 		if (dim(salida)[1]==0){
 			x1<-unlist(strsplit(x, " "))
 			d<-sapply(x1,nchar)
-			e1<-agrep(x1[which(d==max(d))],buscar[,3])
+			e1<-agrep(x1[which(d==max(d))],buscar[,4])
 			salida<-buscar[e1,]
 			if (length(e1)>1){salida<-salida[which(duplicated(salida[,2])==TRUE),]}		
 			}
-		cod<-paste(salida[,1],salida[,2],sep="")
+		cod<-paste(salida[,1],salida[,3],sep="")
 		if(length(cod)==0){ 
 			warning("there are same municipalities without cod")
 			cod<-"No macth found" 
