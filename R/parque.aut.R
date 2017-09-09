@@ -54,10 +54,18 @@ parque.aut<-function(year,ca,provincia){
 	n<-xml_nodes(p,css=".tabg")
 	mun<-html_attr(html_nodes(n,css="a"),"href")
 	nn.mun<-str_trim(html_text(html_nodes(n,css="a")))
+	aux<-sapply(mun,strsplit,"/",USE.NAMES=FALSE)
+	len<-unlist(lapply(aux,length))
+	files<-rep("",length(len))
+	for ( i in seq_along(len)){
+		files[i]<-aux[[i]][len[i]]
+	}
+	xlsx::write.xlsx(gsub("[^0-9]","",files),"cod.xlsx")
 	pat<-c(", "," ","\u00E9","\u00E1","\u00ED","\u00F3","\u00FA","\u00C1","\u00C9","\u00CD","\u00D3","\u00DA","\u00F1","\u00D1")
 	rempl<-c("_","_","e","a","i","o","u","A","E","I","O","U","n","N")
 	for (i in 1:length(pat)){
 		nn.mun<-sapply(nn.mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
+		mun<-sapply(mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
 		}
 	files<-paste(year,"_",nn.mun,".pdf",sep="")
 	for (j in 1:length(files)){
@@ -195,6 +203,8 @@ parque.aut<-function(year,ca,provincia){
 			base<-rbind(base,salida)
 			}	
 		}
+		cod<-as.character(read.xlsx("cod.xlsx",1)[,2])
+		base<-as.data.frame(cbind(cod,base))
 	return(base)
 }
 
