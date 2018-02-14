@@ -7,7 +7,8 @@
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
 #' @param provincia one of the 52 Spain’s province.
-#' @param extr Logical variable, is foreign population? FALSE is the default value.#' @param anual logical variable, is data required by age? FALSE is the default value.
+#' @param extr Logical variable, is foreign population? FALSE is the default value.
+#' @param anual logical variable, is data required by age? FALSE is the default value.
 #'
 #' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
 #' 
@@ -23,8 +24,8 @@
 
 getbase.pob<-function(year,provincia,extr=FALSE,anual=FALSE){
 		year<-as.character(year)
-		if(extr==TRUE && anual==TRUE) stop("No existe datos para estos casos")
-		if(anual==TRUE && as.numeric(year)<2011) stop("No existe datos para estos casos")
+		if(extr==TRUE && anual==TRUE) stop("No data for these cases")
+		if(anual==TRUE && as.numeric(year)<2011) stop("No data for these cases")
 		provincia<-toupper(provincia)
 		prov<-provincia
 		provincia<-a.letter(provincia)

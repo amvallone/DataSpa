@@ -70,7 +70,7 @@ parque.aut<-function(year,ca,provincia){
 	files<-paste(year,"_",nn.mun,".pdf",sep="")
 	for (j in 1:length(files)){
 		if(sum(dir(dest)==files[j])==0){
-			download.file(mun[j],paste(dest,"/",files[j],sep=""))
+			download.file(mun[j],paste(dest,"/",files[j],sep=""),mode='wb')
 		}
 	}
 	myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
