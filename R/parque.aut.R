@@ -47,7 +47,8 @@ parque.aut<-function(year,ca,provincia){
 		}
 	## carga la lista de txt
 	dest<-file.path(getwd(),"DGT",provincia,year)
-	if (length(dir(dest))==0) {
+	dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
+	if (length(dataset)==0) {
 	#descarga los archivos
 	page<-paste("http://www.dgt.es/es/seguridad-vial/estadisticas-e-indicadores/informacion-municipal/provincias/",year,"/",ca,"/",prov,".shtml",sep="")
 	p<-read_html(page)
@@ -60,14 +61,14 @@ parque.aut<-function(year,ca,provincia){
 	for ( i in seq_along(len)){
 		files[i]<-aux[[i]][len[i]]
 	}
-	xlsx::write.xlsx(gsub("[^0-9]","",files),"cod.xlsx")
+	cod <- gsub("[^0-9]","",files)
 	pat<-c(", "," ","\u00E9","\u00E1","\u00ED","\u00F3","\u00FA","\u00C1","\u00C9","\u00CD","\u00D3","\u00DA","\u00F1","\u00D1")
 	rempl<-c("_","_","e","a","i","o","u","A","E","I","O","U","n","N")
 	for (i in 1:length(pat)){
 		nn.mun<-sapply(nn.mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
 		mun<-sapply(mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
 		}
-	files<-paste(year,"_",nn.mun,".pdf",sep="")
+	files<-paste(year,"_",cod,"_",nn.mun,".pdf",sep="")
 	for (j in 1:length(files)){
 		if(sum(dir(dest)==files[j])==0){
 			download.file(mun[j],paste(dest,"/",files[j],sep=""),mode='wb')
@@ -75,9 +76,10 @@ parque.aut<-function(year,ca,provincia){
 	}
 	myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
 	lapply(myfiles, function(i) system(paste('pdftotext -eol dos -enc UTF-8 -table', paste0('"', i, '"')), wait = FALSE) )
-	#file.remove(myfiles)
+	file.remove(myfiles)
 	} 
 		dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
+		cod2 <- substr(gsub("[^0-9]","",dataset),9,nchar(dataset))
 		print(length(dataset))
 		base<-data.frame()
 		if(as.numeric(year)<2015){
@@ -203,8 +205,7 @@ parque.aut<-function(year,ca,provincia){
 			base<-rbind(base,salida)
 			}	
 		}
-		cod<-as.character(read.xlsx("cod.xlsx",1)[,2])
-		base<-as.data.frame(cbind(cod,base))
+		base<-as.data.frame(cbind("Cod"=cod2,base))
 	return(base)
 }
 
