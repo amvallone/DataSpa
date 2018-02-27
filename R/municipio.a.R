@@ -19,7 +19,8 @@ municipio.a<-function(http){
 		l.m<-html_attr(html_children(html_nodes(base.m,css="td")),"href")
 		mun<-rep(NA,length(l.m))
 		for (j in 1:length(l.m)){
-			mun[j]<-paste("https://autonomos.axesor.es/",l.m[j],sep="")
+			#mun[j]<-paste("https://autonomos.axesor.es/",l.m[j],sep="")
+			mun[j]<-paste("https://autonomos.axesor.es/informe-de-autonomo/provincias/",l.m[j],sep="")
 		}
 		return(mun)
 	}
