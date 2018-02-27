@@ -19,7 +19,6 @@
 data.firm.a<-function(provincia){
 	prov<-toupper(provincia)
 	b <- "https://autonomos.axesor.es/informe-de-autonomo/provincias/"
-	#b<-"http://www.axesor.es/directorio-informacion-empresas/empresas-de-"
 	p<-c("Albacete","Alicante","Almeria","Alava","Asturias","Avila","Badajoz","Baleares","Barcelona", "Vizcaya","Burgos","Caceres","Cadiz","Cantabria","Castellon","Ciudad-Real","Cordoba","La-Coruna","Cuenca","Guipuzcoa","Girona","Granada","Guadalajara","Huelva","Huesca","Jaen","Leon","Lleida","Lugo","Madrid","Malaga","Murcia","Navarra","Orense","Palencia","Las-Palmas","Pontevedra","La-Rioja","Salamanca","Santa-Cruz-De-Tenerife","Segovia","Sevilla","Soria","Tarragona","Teruel","Toledo","Valencia","Valladolid","Zamora","Zaragoza","Ceuta","Melilla")
 	names(p)<-c("ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORU\u00D1A","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA","MELILLA")
 	url<-paste(b,p[prov],sep="")
@@ -31,7 +30,7 @@ data.firm.a<-function(provincia){
 	set
 	lista<-lista.empresa.a(set)
 	cat("se analizan",length(lista),"casos \n")
-	salida<-(matrix(0,nrow=length(lista),ncol=21))
+	salida<-(matrix(0,nrow=length(lista),ncol=12))
 	for (i in 1:length(lista)){
 		emp<-empresa.a(lista[i])
 		if(dim(emp)[1]>1){
