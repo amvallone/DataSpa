@@ -24,11 +24,17 @@ data.firm<-function(provincia){
 	url<-paste(b,p[prov],sep="")
 	mun<-municipio(url)
 	cual<-nn.municipio(url)
-	print(cual)
-	resp<-readline("Indique el numero del muncipio de su interes")
-	set<-mun[as.numeric(resp)]
+	display<-c(cual, paste("[",length(cual)+1,"] Todos",sep=""))
+	cat(display, fill=FALSE)
+	resp<-readline("Indique el numero del muncipio de su interes: ")
+	if ((length(cual)+1)==as.numeric(resp)){
+		resp <- seq_along(cual)
+	} else {
+		resp <- as.integer(unlist(strsplit(resp," ")))
+	}
+	set<-mun[resp]
 	set
-	lista<-lista.empresa(set)
+	lista<-unlist(sapply(set,lista.empresa,USE.NAMES=FALSE))
 	cat("se analizan",length(lista),"casos \n")
 	salida<-(matrix(0,nrow=length(lista),ncol=21))
 	for (i in 1:length(lista)){
