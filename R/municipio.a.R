@@ -1,18 +1,6 @@
-#' @name muncipio.a
-#' @rdname municipio.a
-#'
-#' @title List of muncipalities URLs in Axesor self-employment data base
-#'
-#' @description Generate a list muncipalities URLs in Axesor self-employment data base
-#'
-#' @param http character containing a province URL in Axesor self-employment data nase
-#'
-#' @return no me acuerdo
-#'
-#' @examples
-#' \dontrun{municipio("http://www.axesor.es/informe-de-autonomos/")}
-#'
-#' @export
+
+# Generate a list muncipalities URLs in Axesor self-employment data base
+
 
 municipio.a<-function(http){
 		base.m<-html_nodes(read_html(http),css="#bloque_listadoMunicipios")

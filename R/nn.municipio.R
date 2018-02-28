@@ -1,15 +1,5 @@
-#' @name nn.municipio
-#' @rdname nn.municipio
-#'
-#' @title Nombre de municipio
-#'
-#' @description Genera una lista numerada de los municipios
-#'
-#' @param http una url de provincia en Axesor
-#'
-#' @return un vector de caractres, necesita ser mejorado para mostrar en pantalla.
-#'
-#'
+
+# Genera una lista numerada de los municipios
 
 nn.municipio<-function(http){
 		base.m<-html_nodes(read_html(http),css="#bloque_listadoMunicipios")

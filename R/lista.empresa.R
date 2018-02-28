@@ -1,18 +1,6 @@
-#' @name lista.empresa
-#' @rdname lista.empresa
-#'
-#' @title Genrate Firms URLs list
-#'
-#' @description Generate a list containing the Firm’s URLs in Axesor web site
-#'
-#' @param http character indicating the municipality’s URL in Axesor web site.
-#'
-#' @return a character vextor
-#'
-#' @examples
-#' lista.empresa("http://www.axesor.es/directorio-informacion-empresas/empresas-de-Alava/informacion-empresas-de-Alegria-Dulantzi/1")
-#'
-#' @export
+
+# Generate a list containing the Firm’s URLs in Axesor web site
+
 
 
 lista.empresa<-function(http){

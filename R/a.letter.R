@@ -1,12 +1,6 @@
-#' @name a.letter
-#' @rdname a.letter
-#'
-#' @title Quita las letras ñ y los espacios
-#'
-#' @param x un vector de caracteres
-#'
-#' @description busca y quita las ñ por n y remplaza los espacion por -
-#' @return un vector de caracteres
+
+# busca y quita las ñ por n y remplaza los espacion por -
+
 
 a.letter<-function(x){
 		if(str_detect(x," ")==TRUE){

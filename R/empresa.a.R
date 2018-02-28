@@ -1,20 +1,6 @@
-#' @name empresa.a
-#' @rdname empresa.a
-#'
-#' @title Extract self-emplyment information
-#'
-#' @description Extract the self-employmet`s information from the Axesor webpage.
-#'
-#' @param http caracther with the Axesor self-employment URL
-#'
-#' @return A data frame
-#'
-#' @details for variable contained in the data frame see XX 
-#'
-#' @examples
-#' empresa.a("https://autonomos.axesor.es//informe-de-autonomo/autonomo/Moussa-Gassa/5912075")
-#'
-#' @export 
+
+# Extract the self-employmet`s information from the Axesor webpage.
+ 
 
 
 empresa.a<-function(http){

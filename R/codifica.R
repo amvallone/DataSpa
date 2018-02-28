@@ -1,12 +1,7 @@
-#' name codifica
-#'
-#' @title Imputa los codigos del INE a los muncipios
-#'
-#' @param x un character con el nombre a buscar
-#' @param provincia una provincia de Spain
-#'
-#' @value el codigo INE del municipaio sacado de la lista posibles nombres
-#' @export
+
+# Imputa los codigos del INE a los muncipios
+
+
 
 codifica<-function(x,provincia){
 			p<-c("02","03","04","01","33","05","06","07","08","48","09","10","11","39","12","13","14","15","16","20","17","18","19","21","22","23","24","25","27","28","29","30","31","32","34","35","36","26","37","38","40","41","42","43","44","45","46","47","49","50","51","52")

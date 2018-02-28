@@ -1,15 +1,6 @@
-#' @name get.empresas
-#' @rdname get.empresas
-#'
-#' @title Genera URLs de empresas
-#'
-#' @description Crea las URLs de las empresas para extraer informacion
-#'
-#' @param http URL de pagina conteniendo la lista de URLs
-#'
-#' @return un vector de caracteres conteniendo las URL
-#'
-#'
+
+# Crea las URLs de las empresas para extraer informacion
+
 
 get.empresas<-function(http){
 			h<-read_html(http)

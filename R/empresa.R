@@ -1,20 +1,6 @@
-#' @name empresa
-#' @rdname empresa
-#'
-#' @title Extract fimr`s information
-#'
-#' @description Extract the firm's information from the Axesor webpage.
-#'
-#' @param http caracther with the Axesor firm URL
-#'
-#' @return A data frame
-#'
-#' @details for variable contained in the data frame see XX 
-#'
-#' @examples
-#' empresa("http://www.axesor.es/Informes-Empresas/5774886/ABRELATAS_COMUNICACION_SL.html")
-#'
-#' @export 
+
+# Extract the firm's information from the Axesor webpage.
+
 
 
 

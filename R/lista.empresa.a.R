@@ -1,18 +1,6 @@
-#' @name lista.empresa.a
-#' @rdname lista.empresa.a
-#'
-#' @title Genrate Self-employment URLs list
-#'
-#' @description Generate a list containing the self-employment`s URLs in Axesor web site
-#'
-#' @param http character indicating the municipality’s URL in Axesor web site.
-#'
-#' @return a character vextor
-#'
-#' @examples
-#' \dontrun{lista.empresa.a("")}
-#'
-#' @export
+
+# Generate a list containing the self-employment`s URLs in Axesor web site
+
 
 lista.empresa.a<-function(http){
 	h<-read_html(http)

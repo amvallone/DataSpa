@@ -1,18 +1,6 @@
-#' @name muncipio
-#' @rdname municipio
-#'
-#' @title List of muncipalities URLs in Axesor firms data base
-#'
-#' @description Generate a list muncipalities URLs in Axesor firms data base
-#'
-#' @param http character containing a province URL in Axesor firms data nase
-#'
-#' @return no me acuerdo
-#'
-#' @examples
-#' municipio("http://www.axesor.es/directorio-informacion-empresas/empresas-de-Alava")
-#'
-#' @export
+
+# Generate a list muncipalities URLs in Axesor firms data base
+
 
 municipio<-function(http){
 		base.m<-html_nodes(read_html(http),css="#bloque_listadoMunicipios")

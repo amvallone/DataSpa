@@ -18,11 +18,7 @@
 #'
 #' @export
 
-##Cataluña Catalunia
-##Comunidad Valenciana Valencia
-## Pais Vasco paisvasco
-## La Rioja la-rioja
-## Ceuta y Melilla  ceuta-melilla
+
 
 parque.aut<-function(year,ca,provincia){
 	year<-as.character(year)

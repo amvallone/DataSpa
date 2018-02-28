@@ -1,15 +1,6 @@
-#' @name get.empresas.a
-#' @rdname get.empresas.a
-#'
-#' @title Genera URLs de Autonomos
-#'
-#' @description Crea las URLs de los Autonomos para extraer informacion
-#'
-#' @param http URL de pagina conteniendo la lista de URLs
-#'
-#' @return un vector de caracteres conteniendo las URLs
-#'
-#'
+
+# Crea las URLs de los Autonomos para extraer informacion
+
 
 get.empresas.a<-function(http){
 			h<-read_html(http)
