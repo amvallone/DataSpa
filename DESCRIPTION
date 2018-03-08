@@ -1,7 +1,13 @@
 Package: DataSpa
 Title: Collect Spanish data at municipality level
-Version: 0.0.0.1
-Authors@R: c(person("Andres","Vallone",email="avallone@ucn.cl", role=c("aut","cre")),person("Coro","Chasco",email="coro.chasco@uam.es",role="ctb"))
+Version: 0.9
+Authors@R: c( person(given = "Andres", 
+                     family = "Vallone", 
+                     role = c("aut", "cre"), 
+                     email = "avallonev@ucn.cl"), 
+	      person(given = "Coro", 
+	             family = "Chasco", 
+	             role = "ctb", email = "coro.chasco@guam.es") )
 Description: Collect data from different sources for Spanish municipalities.
 Depends: R (>= 3.1),
 		stringr,

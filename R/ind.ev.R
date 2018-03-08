@@ -28,6 +28,11 @@
 #' If \code{print} is \code{TRUE}, a \code{xlsx} file containing ten sheet, one  data frame per index, is saved into the folder \code{Outputs} by the name:
 #' \code{pob_ev_index_provincia_inicio-fin.xlsx}
 #'
+#' @references{
+#' Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
+#' \url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
+#'}
+#' @family Manipulate functions
 #' @examples
 #' ind.ev(2005,2007,"Avila")
 #'

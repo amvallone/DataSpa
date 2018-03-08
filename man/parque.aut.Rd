@@ -14,7 +14,7 @@ parque.aut(year, ca, provincia)
 \item{provincia}{one of the 52 Spanish provincies}
 }
 \value{
-A data frame
+A data frame containing the following variables: the municipality name, number and average age of vehicle fleet, type of vehicles (cars, vans, trucks, motorcycles, buses, etc) and some other variables related to the register of drivers, accidents and vehicle taxes.
 }
 \description{
 Collect the municipality vehicle fleet information

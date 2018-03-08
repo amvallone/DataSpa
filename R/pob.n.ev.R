@@ -11,9 +11,11 @@
 #'
 #' @return a data frame
 #'
+#' @family Loading functions
 #' @details If \code{print} is \code{TRUE}, a \code{xlsx} file containing the data frame is saved into the folder \code{Outputs} by the name:
 #' \code{pob_national_ev_provincia_inicio-fin.xlsx}
 #'
+#' @family Manipulate functions
 #' @examples
 #' pob.n.ev(2005,2007,"Avila")
 #'

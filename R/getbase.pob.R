@@ -6,16 +6,18 @@
 #' @description Download the population data of the province`s municipalities corresponding to the required. 
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spain’s province.
+#' @param provincia one of the 52 Spainish province.
 #' @param extr Logical variable, is foreign population? FALSE is the default value.
 #' @param anual logical variable, is data required by age? FALSE is the default value.
 #'
-#' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
+#' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.
+#'If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
 #' 
 #' @details You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
 #'	
-#' "ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA"and"MELILLA"
+#' "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLO", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 #'
+#' @family download functions
 #' @examples
 #' getbase.pob(2005,"Madrid")
 #'

@@ -17,7 +17,16 @@ a \code{xlsx} file saved in \code{data_poblacion} folder into the working direct
 \description{
 Download the population phenomena data of the province`s municipalities corresponding to the required.
 }
+\details{
+You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+
+"ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLO", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
+}
 \examples{
 getbase.fen(2005,"Madrid")
 
+}
+\seealso{
+Other download functions: \code{\link{getbase.paro}},
+  \code{\link{getbase.pob}}
 }

@@ -9,7 +9,7 @@ pob.fen(year, provincia)
 \arguments{
 \item{year}{A numerical value between 1996 and 2015 year indicating the year of the required data.}
 
-\item{provincia}{one of the 52 Spain`s province.}
+\item{provincia}{one of the 52 Spainish province.}
 }
 \value{
 a  data frame conatining the principal population phenomena 
@@ -24,4 +24,12 @@ import into R the principal population phenomena
 \examples{
 pob.fen(2012,"Madrid")
 
+}
+\seealso{
+Other Loading functions: \code{\link{paro}},
+  \code{\link{pob.a}}, \code{\link{pob.e.tot}},
+  \code{\link{pob.e}}, \code{\link{pob.h.tot}},
+  \code{\link{pob.m.tot}}, \code{\link{pob.n.ev}},
+  \code{\link{pob.n.tot}}, \code{\link{pob.q}},
+  \code{\link{pob.tot}}
 }

@@ -9,8 +9,9 @@
 #'
 #' @details is an interative function, require the selection of a particular municipality. 
 #'
-#' @return a data frame with the following variables:
+#' @return A data frame function containing the following variables for each self-employment: location (province, municipality, address), company characteristics (name, birth, legal form, social object), economic activity codes and self-employment URL
 #'
+#' @family firms functions
 #' @examples
 #' \dontrun{data.firm.a("Ceuta")}
 #'

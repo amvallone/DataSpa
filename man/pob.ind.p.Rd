@@ -34,9 +34,21 @@ in this function 10 index are comptuted:
 \item Female population average age
 }
 
-The principal difference between this function and \code{pob.ind()} is the precision of the calculaton. For more details look for El atlas....
+The principal difference between this function and \code{pob.ind()} is the precision of the calculaton. This function use since the year 2011 the exact age definition for index imputation, instead that the aproximation use in \code{pob.ind}. For more details see the 2017 Socioeconomic Atlas of Extremadura.
 }
 \examples{
 pob.ind.p(2012,"Madrid")
 
+}
+\references{
+{
+\insertRef{je_2017}{DataSpa}
+}
+}
+\seealso{
+Other Manipulate functions: \code{\link{ind.ev}},
+  \code{\link{pob.e.ev}}, \code{\link{pob.ev}},
+  \code{\link{pob.fen.ev}}, \code{\link{pob.h.ev}},
+  \code{\link{pob.ind}}, \code{\link{pob.m.ev}},
+  \code{\link{pob.n.ev}}
 }

@@ -5,7 +5,7 @@
 #' @description import into R the  population grouped by age data
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spain`s province.
+#' @param provincia one of the 52 Spainish province.
 #'
 #' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
 #'
@@ -16,6 +16,7 @@
 #' 		\item  101 variables containing the population grouped by age
 #'	}
 #'
+#' @family Loading functions
 #' @examples
 #' pob.a(2016,"Caceres")
 #'
@@ -34,7 +35,7 @@ pob.a<-function(year,provincia){
 			getbase.pob(year,provincia,anual=TRUE)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1)
+		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
 		d<-dim(datos)
 		t<-which(datos[,1]=="Ambos sexos")
 		h<-which(datos[,1]=="Hombres")

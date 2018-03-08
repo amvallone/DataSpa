@@ -5,10 +5,11 @@
 #' @title  Population by quinquennials age group data
 #' @description import into R the  population by quinquennials age group data
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.#' @param provincia one of the 52 Spain`s province.
+#' @param year A numerical value between 1996 and the current year indicating the year of the required data.#' @param provincia one of the 52 Spainish province.
 #'
 #' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: #' - \code{cod} is the municipality identification number based in the INE codification.#'	- \code{Name} the municipality name.#' - \code{Total} total municipality population#' - 21 variables containing the population by quinquennials age group
 #'
+#' @family Loading functions
 #' @examples
 #' pob.q(2016,"Caceres")
 #'
@@ -25,7 +26,7 @@ pob.q<-function(year,provincia){
 			getbase.pob(year,provincia)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1)
+		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
 		d<-dim(datos)
 		t<-which(datos[,1]=="Ambos sexos")
 		h<-which(datos[,1]=="Hombres")

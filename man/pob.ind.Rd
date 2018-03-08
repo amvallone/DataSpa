@@ -14,13 +14,13 @@ pob.ind(year, provincia, print = FALSE)
 \item{print}{Logical variable, do you need print a output file with the results?. Default value is FALSE}
 }
 \value{
-a data frame
+A data frame contains the spatial units on the brows and the index coputed in the columns.
 }
 \description{
 Compute a set of population index
 }
 \details{
-in this function XX index are comptuted:
+in this function 10 index are comptuted:
 \itemize{
 \item Childhood index
 	\item Youthfulness index
@@ -33,9 +33,21 @@ in this function XX index are comptuted:
 	\item Male population average age
 \item Female population average age
 }
-For a full description of the index, see El atlas....
+For a full description of the index, see the 2017 Socioeconomic Atlas of Extremadura
 }
 \examples{
 pob.ind(2012,"Madrid")
 
+}
+\references{
+{
+\url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
+}
+}
+\seealso{
+Other Manipulate functions: \code{\link{ind.ev}},
+  \code{\link{pob.e.ev}}, \code{\link{pob.ev}},
+  \code{\link{pob.fen.ev}}, \code{\link{pob.h.ev}},
+  \code{\link{pob.ind.p}}, \code{\link{pob.m.ev}},
+  \code{\link{pob.n.ev}}
 }

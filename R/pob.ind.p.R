@@ -24,8 +24,13 @@
 #'	\item Female population average age
 #' }
 #' 
-#' The principal difference between this function and \code{pob.ind()} is the precision of the calculaton. For more details look for El atlas....
+#' The principal difference between this function and \code{pob.ind()} is the precision of the calculaton. This function use since the year 2011 the exact age definition for index imputation, instead that the aproximation use in \code{pob.ind}. For more details see the 2017 Socioeconomic Atlas of Extremadura.
 #'
+#' @references{
+#' Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
+#' \url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
+#'}
+#' @family Manipulate functions
 #' @examples
 #' pob.ind.p(2012,"Madrid")
 #'

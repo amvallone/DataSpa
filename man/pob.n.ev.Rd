@@ -29,3 +29,17 @@ If \code{print} is \code{TRUE}, a \code{xlsx} file containing the data frame is 
 pob.n.ev(2005,2007,"Avila")
 
 }
+\seealso{
+Other Loading functions: \code{\link{paro}},
+  \code{\link{pob.a}}, \code{\link{pob.e.tot}},
+  \code{\link{pob.e}}, \code{\link{pob.fen}},
+  \code{\link{pob.h.tot}}, \code{\link{pob.m.tot}},
+  \code{\link{pob.n.tot}}, \code{\link{pob.q}},
+  \code{\link{pob.tot}}
+
+Other Manipulate functions: \code{\link{ind.ev}},
+  \code{\link{pob.e.ev}}, \code{\link{pob.ev}},
+  \code{\link{pob.fen.ev}}, \code{\link{pob.h.ev}},
+  \code{\link{pob.ind.p}}, \code{\link{pob.ind}},
+  \code{\link{pob.m.ev}}
+}

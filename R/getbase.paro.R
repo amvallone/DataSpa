@@ -6,18 +6,19 @@
 #' @description Download the work force data of the province`s municipalities corresponding to the required. 
 #'
 #' @param year A numerical value between 2005 and the current year indicating the year of the required data.
-#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.#' @param provincia one of the 52 Spain’s province.#'
+#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.#' @param provincia one of the 52 Spainish province.#'
 #' @return a file host in \code{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
 #' 
 #' @examples
 #' getbase.paro(2005,"julio","Madrid")
 #'
-#' @details the possible mes value are: "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre" and "diciembre"
+#' @details the possible mes value are: "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre" and "diciembre"
 #' 
 #'	You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
 #'
-#' "ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS","AVILA","BADAJOZ"," BALEARES","BARCELONA","BIZKAIA","BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLO","CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA","GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA","HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA","MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS","PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE","SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL","TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA","CEUTA"and"MELILLA"
+#' "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLO", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 #'
+#' @family download functions
 #' @export
 
 getbase.paro<-function(year,mes,provincia){

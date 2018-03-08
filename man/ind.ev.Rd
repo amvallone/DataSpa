@@ -43,3 +43,10 @@ If \code{print} is \code{TRUE}, a \code{xlsx} file containing ten sheet, one  da
 ind.ev(2005,2007,"Avila")
 
 }
+\seealso{
+Other Manipulate functions: \code{\link{pob.e.ev}},
+  \code{\link{pob.ev}}, \code{\link{pob.fen.ev}},
+  \code{\link{pob.h.ev}}, \code{\link{pob.ind.p}},
+  \code{\link{pob.ind}}, \code{\link{pob.m.ev}},
+  \code{\link{pob.n.ev}}
+}

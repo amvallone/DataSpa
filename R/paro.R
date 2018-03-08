@@ -13,6 +13,7 @@
 #' @return data frame containing the fallowing variables.
 #' - \code{cod} is the municipality identification number based in the INE codification.#' - \code{Name} the municipality name.#' - \code{Total unemployment} number of unemployed people in the municipality #' - \code{Total male unemployment} number of unemployes males in the municipality#' - \code{Total female unemployment} number of unemployees females in the municipality
 #'
+#' @family Loading functions
 #' @examples
 #' #paro(2005,"julio","Madrid")
 #'
@@ -44,8 +45,8 @@ paro<-function(year,mes="julio",provincia){
 		}
 		open<-paste(dirc,file1,sep="")
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1)
-		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3))
+		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
+		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
 		idn<-apply(idn,2,as.character)
 		datos<-datos[-dim(datos)[1],]
@@ -99,7 +100,7 @@ paro<-function(year,mes="julio",provincia){
 		salida
 	} else {
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1)
+		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
 		datos<-datos[-dim(datos)[1],]
 		p<-max(which(is.na(datos[,1])))+1

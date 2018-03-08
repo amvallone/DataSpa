@@ -14,6 +14,7 @@
 #' @details If \code{print} is \code{TRUE}, a \code{xlsx} file containing two sheet, one per each data frame, is saved into the folder \code{Outputs} by the name:
 #' \code{fen_evol_total_provincia_inicio-fin.xlsx}
 #'
+#' @family Manipulate functions
 #' @examples
 #' pob.fen.ev(2005,2007,"Avila")
 #'

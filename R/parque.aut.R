@@ -8,11 +8,11 @@
 #'
 #' @param year is numeric variable expressing the year of interest, must be higher than 2013#' @param ca is a character indicating one of the 17 the autonomous community#' @param provincia one of the 52 Spanish provincies
 #'
-#' @return A data frame
+#' @return A data frame containing the following variables: the municipality name, number and average age of vehicle fleet, type of vehicles (cars, vans, trucks, motorcycles, buses, etc) and some other variables related to the register of drivers, accidents and vehicle taxes. 
 #'
-#' @details \code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias", "Castilla y Leon", "Castilla-La Mancha", "Catalu\u00F1a", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
-#' 
+#' @details \code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias", "Castilla y Leon", "Castilla-La Mancha", "Cataluña", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
 #' For more detail information about Spanish Autonomus Comunities and provincies visit \href{https://es.wikipedia.org/wiki/Anexo:Provincias_y_ciudades_aut%C3%B3nomas_de_Espa%C3%B1a}{Wikipedia Anexo}
+#' 
 #' @examples
 #' \dontrun{parque.aut(2014,"Ceuta y Melilla","Ceuta")}
 #'

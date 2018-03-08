@@ -10,7 +10,7 @@ data.firm.a(provincia)
 \item{provincia}{one of the 52 Spanish provinces. See \link{getbase.pob} for details.}
 }
 \value{
-a data frame with the following variables:
+A data frame function containing the following variables for each self-employment: location (province, municipality, address), company characteristics (name, birth, legal form, social object), economic activity codes and self-employment URL
 }
 \description{
 Generate a data frame of self-employment information of a particular municipality
@@ -21,4 +21,7 @@ is an interative function, require the selection of a particular municipality.
 \examples{
 \dontrun{data.firm.a("Ceuta")}
 
+}
+\seealso{
+Other firms functions: \code{\link{data.firm}}
 }

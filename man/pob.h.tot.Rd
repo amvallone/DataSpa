@@ -9,7 +9,7 @@ pob.h.tot(year, provincia)
 \arguments{
 \item{year}{A numerical value between 1996 and the current year indicating the year of the required data.}
 
-\item{provincia}{one of the 52 Spain`s province.}
+\item{provincia}{one of the 52 Spainish province.}
 }
 \value{
 a  data frame conatining the municipality total male population
@@ -20,4 +20,12 @@ import into R the total male municpality population
 \examples{
 pob.h.tot(2016,"Madrid")
 
+}
+\seealso{
+Other Loading functions: \code{\link{paro}},
+  \code{\link{pob.a}}, \code{\link{pob.e.tot}},
+  \code{\link{pob.e}}, \code{\link{pob.fen}},
+  \code{\link{pob.m.tot}}, \code{\link{pob.n.ev}},
+  \code{\link{pob.n.tot}}, \code{\link{pob.q}},
+  \code{\link{pob.tot}}
 }

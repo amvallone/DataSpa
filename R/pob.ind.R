@@ -8,9 +8,9 @@
 #' @param	provincia one of the 52 Spanish provinces.
 #' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
 #'
-#' @return a data frame
+#' @return A data frame contains the spatial units on the brows and the index coputed in the columns.
 #'
-#' @details in this function XX index are comptuted:
+#' @details in this function 10 index are comptuted:
 #' \itemize{
 #'	\item Childhood index
 #' 	\item Youthfulness index
@@ -23,8 +23,13 @@
 #' 	\item Male population average age
 #'	\item Female population average age
 #' }
-#' For a full description of the index, see El atlas....
+#' For a full description of the index, see the 2017 Socioeconomic Atlas of Extremadura 
 #'
+#' @references{
+#' Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
+#' \url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
+#'}
+#' @family Manipulate functions
 #' @examples
 #' pob.ind(2012,"Madrid")
 #'

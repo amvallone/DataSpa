@@ -6,13 +6,14 @@
 #' @description import into R the principal population phenomena 
 #'
 #' @param year A numerical value between 1996 and 2015 year indicating the year of the required data.
-#' @param provincia one of the 52 Spain`s province.
+#' @param provincia one of the 52 Spainish province.
 #'
 #' @return a  data frame conatining the principal population phenomena 
 #'	\itemize{
 #'		\item \code{Birth} number of birth in the municipality#'		\item \code{Deaths} Number of death in the municipality 
 #'	}
 #'
+#' @family Loading functions
 #' @examples
 #' pob.fen(2012,"Madrid")
 #'
@@ -30,7 +31,7 @@ pob.fen<-function(year,provincia){
 			getbase.fen(year,provincia)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,2,5))
+		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,2,5), encoding ="UTF-8")
 		datos<-datos[which(complete.cases(datos)==TRUE),]
 		datos<-datos[-1,]
 		d<-dim(datos)

@@ -28,3 +28,11 @@ Import the work force data of the province`s municipalities corresponding to the
 #paro(2005,"julio","Madrid")
 
 }
+\seealso{
+Other Loading functions: \code{\link{pob.a}},
+  \code{\link{pob.e.tot}}, \code{\link{pob.e}},
+  \code{\link{pob.fen}}, \code{\link{pob.h.tot}},
+  \code{\link{pob.m.tot}}, \code{\link{pob.n.ev}},
+  \code{\link{pob.n.tot}}, \code{\link{pob.q}},
+  \code{\link{pob.tot}}
+}

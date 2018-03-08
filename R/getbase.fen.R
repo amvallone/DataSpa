@@ -17,6 +17,10 @@
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
 #' @param provincia one of the 52 Spain’s province.
 #'
+#' @family download functions
+#' @details You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+#'	
+#' "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLO", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 #'
 #' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}. 
 #' @examples

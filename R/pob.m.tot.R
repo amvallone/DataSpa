@@ -5,10 +5,11 @@
 #' @description import into R the total female municpality population 
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spain`s province.
+#' @param provincia one of the 52 Spainish province.
 #'
 #' @return a  data frame conatining the municipality total female population 
 #'
+#' @family Loading functions
 #' @examples
 #' pob.m.tot(2016,"Madrid")
 #'
@@ -28,7 +29,7 @@ pob.m.tot<-function(year,provincia){
 			getbase.pob(year,provincia)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1:4))
+		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1:4), encoding ="UTF-8")
 		d<-dim(datos)
 		nombres<-as.character(datos[,1])
 		codigo<-rep("AA",d[1])
