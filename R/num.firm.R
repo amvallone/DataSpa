@@ -12,7 +12,7 @@
 #'
 #' @family firms functions
 #' @examples
-#' \dontrun{num.firm("Ceuta")}
+#' \dontrun{num.firm("Araba")}
 #'
 #' @export
 

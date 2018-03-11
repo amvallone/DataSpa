@@ -42,7 +42,8 @@ pob.ind.p(2012,"Madrid")
 }
 \references{
 {
-\insertRef{je_2017}{DataSpa}
+Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
+\url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
 }
 }
 \seealso{

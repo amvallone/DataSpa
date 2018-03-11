@@ -23,5 +23,6 @@ is an interative function, require the selection of a particular municipality.
 
 }
 \seealso{
-Other firms functions: \code{\link{data.firm.a}}
+Other firms functions: \code{\link{data.firm.a}},
+  \code{\link{num.firm.a}}, \code{\link{num.firm}}
 }

@@ -43,6 +43,12 @@ If \code{print} is \code{TRUE}, a \code{xlsx} file containing ten sheet, one  da
 ind.ev(2005,2007,"Avila")
 
 }
+\references{
+{
+Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
+\url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
+}
+}
 \seealso{
 Other Manipulate functions: \code{\link{pob.e.ev}},
   \code{\link{pob.ev}}, \code{\link{pob.fen.ev}},
