@@ -106,7 +106,7 @@ paro<-function(year,mes="julio",provincia){
 		p<-max(which(is.na(datos[,1])))+1
 		f<-dim(datos)[1]
 		ind<-datos[p:f,1]
-		if(stri_count(ind[8],regex="[[:number:]]")==4){
+		if(stri_count(ind[1],regex="[[:number:]]")==4){
 			cero<-rep(0,length(ind))
 			ind<-paste(cero,ind,sep="")
 		}
