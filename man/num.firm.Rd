@@ -2,7 +2,7 @@
 % Please edit documentation in R/num.firm.R
 \name{num.firm}
 \alias{num.firm}
-\title{Collect the number of firm at muncipality level}
+\title{Collects the set of firms at a municipality level}
 \usage{
 num.firm(provincia)
 }
@@ -10,16 +10,16 @@ num.firm(provincia)
 \item{provincia}{one of the 52 Spanish provinces. See \link{getbase.pob} for details.}
 }
 \value{
-A data frame
+It is a data frame
 }
 \description{
-Generate a data frame with the number of firms in each municipality
+\code{num.firm} generates a data frame with the set of firms in a selected municipality
 }
 \examples{
 \dontrun{num.firm("Araba")}
 
 }
 \seealso{
-Other firms functions: \code{\link{data.firm.a}},
+Other firm functions: \code{\link{data.firm.a}},
   \code{\link{data.firm}}, \code{\link{num.firm.a}}
 }

@@ -2,22 +2,22 @@
 % Please edit documentation in R/parque.aut.R
 \name{parque.aut}
 \alias{parque.aut}
-\title{Municipality vehicle fleet information}
+\title{Vehicle fleet information at a municipality level}
 \usage{
 parque.aut(year, ca, provincia)
 }
 \arguments{
-\item{year}{is numeric variable expressing the year of interest, must be higher than 2013}
+\item{year}{is numeric variable corresponding to the year, which must be higher than 2013}
 
-\item{ca}{is a character indicating one of the 17 the autonomous community}
+\item{ca}{is a character indicating one of the 17 the Spanish autonomous communities}
 
 \item{provincia}{one of the 52 Spanish provincies}
 }
 \value{
-A data frame containing the following variables: the municipality name, number and average age of vehicle fleet, type of vehicles (cars, vans, trucks, motorcycles, buses, etc) and some other variables related to the register of drivers, accidents and vehicle taxes.
+It is a data frame containing the following variables: the municipality name, number and average age of vehicle fleet, type of vehicles (cars, vans, trucks, motorcycles, buses, etc) and some other variables related to the register of drivers, accidents and vehicle taxes.
 }
 \description{
-Collect the municipality vehicle fleet information
+\code{parque.aut} collects information about vehicle fleet in each Spanish municipality
 }
 \examples{
 \dontrun{parque.aut(2014,"Ceuta y Melilla","Ceuta")}

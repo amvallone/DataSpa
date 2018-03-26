@@ -2,37 +2,35 @@
 % Please edit documentation in R/pob.fen.ev.R
 \name{pob.fen.ev}
 \alias{pob.fen.ev}
-\title{Population phenomena evolution}
+\title{Panel of the number of births and deaths at a municipality level for a period of time}
 \usage{
 pob.fen.ev(inicio, fin, provincia, print = FALSE)
 }
 \arguments{
-\item{inicio}{starting year of the panel. Must be higher than 1996.}
+\item{inicio}{starting year of the panel, which must be higher than 1996..}
 
 \item{fin}{last year of the panel.}
 
 \item{provincia}{one of the 52 Spanish provinces.}
 
-\item{print}{Logical variable, do you need print a output file with the results?. Default value is FALSE}
+\item{print}{logical variable ‘do you need print a output file with the results?’ for which FALSE is the default value.}
 }
 \value{
-a list conteining two data frame one of birth population at municpality level (Nacimientos) and other with death population at muncipality level (Falleciemientos)
+It is list containing two data frames for the number of births  (Nacimientos) and deaths (Falleciemientos) at the municpality level.
 }
 \description{
-Create a list containing the provincie population phenomena evolution at municipality level between the \code{inicio} and \code{fin} years.
+\code{pob.fen.ev} creates a list with the panel of the number of births and deaths of Spain at the municipality level for a period of time from the years  \code{inicio} to \code{fin}.
 }
 \details{
-If \code{print} is \code{TRUE}, a \code{xlsx} file containing two sheet, one per each data frame, is saved into the folder \code{Outputs} by the name:
-\code{fen_evol_total_provincia_inicio-fin.xlsx}
+If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing two sheet, one per each variable data frame, is saved into the folder \code{Outputs} called \code{fen_evol_total_provincia_inicio-fin.xlsx}
 }
 \examples{
 pob.fen.ev(2005,2007,"Avila")
 
 }
 \seealso{
-Other Manipulate functions: \code{\link{ind.ev}},
-  \code{\link{pob.e.ev}}, \code{\link{pob.ev}},
-  \code{\link{pob.h.ev}}, \code{\link{pob.ind.p}},
-  \code{\link{pob.ind}}, \code{\link{pob.m.ev}},
-  \code{\link{pob.n.ev}}
+Other Manipulate functions: \code{\link{pob.e.ev}},
+  \code{\link{pob.ev}}, \code{\link{pob.h.ev}},
+  \code{\link{pob.ind.p}}, \code{\link{pob.ind}},
+  \code{\link{pob.m.ev}}, \code{\link{pob.n.ev}}
 }

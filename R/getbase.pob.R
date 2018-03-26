@@ -5,7 +5,7 @@
 #'
 #' @description \code{getbase.pob} downloads population data of the Spanish municipalities by province. 
 #'
-#' @param yeara numerical value from 1996 and the latest available, which indicates the year of the required database.
+#' @param year a numerical value from 1996 and the latest available, which indicates the year of the required database.
 #' @param provincia one of the 52 Spainish province.
 #' @param extr logical variable ‘is it foreign population?’ FALSE is the default value.
 #' @param anual logical variable ‘is data required by age?’ FALSE is the default value.

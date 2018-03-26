@@ -3,7 +3,7 @@
 #'
 #' @title Collects the set of self-employed at a municipality level
 #'
-#' @description \codes{num.firm.a} generates a data frame with the set of self-employed in a selected municipality
+#' @description \code{num.firm.a} generates a data frame with the set of self-employed in a selected municipality
 #'
 #' @param provincia one of the 52 Spanish provinces. See \link{getbase.pob} for details.
 #'

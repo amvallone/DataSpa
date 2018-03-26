@@ -5,7 +5,7 @@
 #' 
 #' @description \code{pob.e.ev} creates a data frame with a panel of  total foreign population at a municipality level for a period of time from the  \code{inicio} to \code{fin}.
 #' @param	inicio starting year of the panel, which must be higher than 1996.
-#' @param	last year of the panel.
+#' @param	fin last year of the panel.
 #' @param	provincia one of the 52 Spanish provinces.
 #' @param print logical variable ‘do you need print a output file with the results?’ for which FALSE is the default value
 #'

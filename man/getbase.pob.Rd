@@ -2,28 +2,27 @@
 % Please edit documentation in R/getbase.pob.R
 \name{getbase.pob}
 \alias{getbase.pob}
-\title{Collect information of municipality population.}
+\title{Collects information of population at a municipality level.}
 \usage{
 getbase.pob(year, provincia, extr = FALSE, anual = FALSE)
 }
 \arguments{
-\item{year}{A numerical value between 1996 and the current year indicating the year of the required data.}
+\item{year}{a numerical value from 1996 and the latest available, which indicates the year of the required database.}
 
 \item{provincia}{one of the 52 Spainish province.}
 
-\item{extr}{Logical variable, is foreign population? FALSE is the default value.}
+\item{extr}{logical variable ‘is it foreign population?’ FALSE is the default value.}
 
-\item{anual}{logical variable, is data required by age? FALSE is the default value.}
+\item{anual}{logical variable ‘is data required by age?’ FALSE is the default value.}
 }
 \value{
-a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{pob_q_year_provincia.xls}.
-If \code{extr} is TRUE, the file will be saved as \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is saved by the name \code{pob_a_year_provincia.xls}
+It is a \code{xlsx} which is host in  the \code{data_poblacion} which, in turn, is located inside the working directory called \code{pob_q_year_provincia.xls}. If \code{extr} is TRUE, the file is called \code{pob_e_year_provincia.xls}. In case of \code{anual} is TRUE the file is called \code{pob_a_year_provincia.xls}. There is not data for foreign population by one or five-year age, the combination of \code{extr=TRUE} and \code{anual=TRUE will} generate an error message (“No data for these cases”).
 }
 \description{
-Download the population data of the province`s municipalities corresponding to the required.
+\code{getbase.pob} downloads population data of the Spanish municipalities by province.
 }
 \details{
-You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+The names of the Spanish provinces may or may not be called. If yes, employ capital letters as follows:
 
 "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", "BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLON", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 }

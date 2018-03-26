@@ -2,24 +2,24 @@
 % Please edit documentation in R/pob.fen.R
 \name{pob.fen}
 \alias{pob.fen}
-\title{Principal municiplaity puplation phenomena}
+\title{Number of births and deaths at a municipality level}
 \usage{
 pob.fen(year, provincia)
 }
 \arguments{
-\item{year}{A numerical value between 1996 and 2015 year indicating the year of the required data.}
+\item{year}{a numerical value from 1996 and 2015, which indicates the year of the required database}
 
 \item{provincia}{one of the 52 Spainish province.}
 }
 \value{
-a  data frame conatining the principal population phenomena 
+It is a data frame containing two main demographic indexes: 
 \itemize{
 	\item \code{Birth} number of birth in the municipality
 	\item \code{Deaths} Number of death in the municipality 
 }
 }
 \description{
-import into R the principal population phenomena
+\code{pob.fen} imports into an R file two main demographic indexes at the municipality level: number of births and deaths.
 }
 \examples{
 pob.fen(2012,"Madrid")

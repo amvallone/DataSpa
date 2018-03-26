@@ -2,27 +2,27 @@
 % Please edit documentation in R/getbase.paro.R
 \name{getbase.paro}
 \alias{getbase.paro}
-\title{Collect information of municipality unemploymet.}
+\title{Collects information of unemployed at a municipality level.}
 \usage{
 getbase.paro(year, mes, provincia)
 }
 \arguments{
-\item{year}{A numerical value between 2005 and the current year indicating the year of the required data.}
+\item{year}{a numerical value between 2005 and the last available, which indicates the year of the required database.}
 
-\item{mes}{one of the 12 moths in Spanish indicating the moth when the data was collected.}
+\item{mes}{oone of the 12 months –in Spanish language– indicating the month of the data collection.}
 
-\item{provincia}{one of the 52 Spainish province.}
+\item{provincia}{one of the 52 Spainish provinces.}
 }
 \value{
-a file host in \code{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
+It is a \code{xlsx} file host in the \code{data_paro} folder which, in turn, is located inside the working directory called  \code{paro_MUNI_provincia_mmyy.xls}.
 }
 \description{
-Download the work force data of the province`s municipalities corresponding to the required.
+\code{getbase.paro} downloads data about the unemployed of the Spanish municipalities by province.
 }
 \details{
-the possible mes value are: "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre" and "diciembre"
+The month must be called as follows: "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre" and "diciembre".
 
-You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+The names of the Spanish provinces may or may not be called. If yes, employ capital letters as follows:
 
 "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLON", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 }

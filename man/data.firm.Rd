@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.firm.R
 \name{data.firm}
 \alias{data.firm}
-\title{Collect firm information at muncipality level}
+\title{Collects information of firms at a municipality level}
 \usage{
 data.firm(provincia)
 }
@@ -10,19 +10,19 @@ data.firm(provincia)
 \item{provincia}{one of the 52 Spanish provinces. See \link{getbase.pob} for details.}
 }
 \value{
-A data frame function containing the following variables for each company: location (province, municipality, address, geographic coordinates), company characteristics (name, birth, legal form, social object), main figures (number of employees, social capital, sales), economic activity codes and firm URL
+A data frame containing the following variables for each company: location (province, municipality, address, geographic coordinates), company characteristics (name, birth, legal form, social object), main figures (number of employees, social capital, sales), economic activity codes and firm URL
 }
 \description{
-Generate a data frame of firms information of a particular municipality
+Generate a data frame of firm information of a particular municipality
 }
 \details{
-is an interative function, require the selection of a particular municipality.
+It is an interactive function, which requires the selection of a particular municipality.
 }
 \examples{
 \dontrun{data.firm("Ceuta")}
 
 }
 \seealso{
-Other firms functions: \code{\link{data.firm.a}},
+Other firm functions: \code{\link{data.firm.a}},
   \code{\link{num.firm.a}}, \code{\link{num.firm}}
 }

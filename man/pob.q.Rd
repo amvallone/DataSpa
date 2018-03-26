@@ -2,24 +2,24 @@
 % Please edit documentation in R/pob.q.R
 \name{pob.q}
 \alias{pob.q}
-\title{Population by quinquennials age group data}
+\title{Population by five-year age groups and sex}
 \usage{
 pob.q(year, provincia)
 }
 \arguments{
-\item{year}{A numerical value between 1996 and the current year indicating the year of the required data.}
+\item{year}{a numerical value from 1996 and the latest available year, which indicates the year of the required database.}
 
-\item{provincia}{one of the 52 Spainish province.}
+\item{provincia}{one of the 52 Spainish provinces.}
 }
 \value{
-a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
+It is a list containing a data frame of the Spanish municipality population by five-year age groups and sex. Each data frame contains the following variables:: 
 - \code{cod} is the municipality identification number based in the INE codification.
-- \code{Name} the municipality name.
-- \code{Total} total municipality population
-- 21 variables containing the population by quinquennials age group
+- \code{Name} is the municipality name.
+- \code{Total} is the municipality population.
+- Twenty-one variables containing the population by five-year age groups.
 }
 \description{
-import into R the  population by quinquennials age group data
+\code{pob.q} imports into an R file the Spanish municipality population by five-year age groups and sex
 }
 \examples{
 pob.q(2016,"Caceres")

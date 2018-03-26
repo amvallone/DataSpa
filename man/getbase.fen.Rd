@@ -12,13 +12,13 @@ getbase.fen(year, provincia)
 \item{provincia}{one of the 52 Spain’s province.}
 }
 \value{
-a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}.
+It is a \code{xlsx} which is host in \code{data_poblacion} folder iwhich, in turn, is located inside the working directory called \code{fen_year_provincia}.
 }
 \description{
-Download the population phenomena data of the province`s municipalities corresponding to the required.
+\code{getbase.fen} downloads the population phenomena data of the province‘s municipalities corresponding to the required.
 }
 \details{
-You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+The names of the Spanish provinces may or may not be called. If yes, employ capital letters as follows:
 
 "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", "BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLON", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 }

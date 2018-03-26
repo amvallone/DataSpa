@@ -2,20 +2,20 @@
 % Please edit documentation in R/pob.n.tot.R
 \name{pob.n.tot}
 \alias{pob.n.tot}
-\title{Total National Population  data}
+\title{National Population  data}
 \usage{
 pob.n.tot(year, provincia)
 }
 \arguments{
-\item{year}{A numerical value between 1996 and the current year indicating the year of the required data.}
+\item{year}{a numerical value from 1996 and the latest available year, which indicates the year of the required database.}
 
-\item{provincia}{one of the 52 Spainish province.}
+\item{provincia}{one of the 52 Spainish provinces.}
 }
 \value{
-a  data frame conatining the municipality total national population
+It is a data frame containing the municipality national population of Spain.
 }
 \description{
-import into R the total national municpality population
+\code{pob.n.tot} imports into an R file the national population of Spain by municipality.
 }
 \examples{
 pob.n.tot(2016,"Madrid")
