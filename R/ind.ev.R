@@ -1,38 +1,37 @@
 #' @name ind.ev
 #' @rdname ind.ev
 #'
-#' @title Population index evolution
+#' @title Panel of demographic indexes at a municipality level for a period of time
 #' 
-#' @description Create a list containing the population index evolution at municipality level between the \code{inicio} and \code{fin} years.
-#' @param	inicio starting year of the panel. Must be higher than 1996.
+#' @description \code{ind.ev} creates a list containing a panel of demographic indexes of Spain at the municipality level for a period of time from the years \code{inicio} to \code{fin}.
+#' @param	inicio starting year of the panel, which must be higher than 1996.
 #' @param	fin last year of the panel.
 #' @param	provincia one of the 52 Spanish provinces.
-#' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
+#' @param print logical variable ‘do you need to print a output file with the results?’, being FALSE the default value
 #'
-#' @return a list conteining ten data frame.
+#' @return It is a list conteining ten data frame.
 #'
-#' @details in this function 10 index are comptuted:
+#' @details This function calculates ten demographical indexes:
 #' \itemize{
 #'	\item Childhood index
-#' 	\item Youthfulness index
-#' 	\item Eld index
+#' 	\item Youth index
+#' 	\item Third age index
 #' 	\item Dependence index
-#' 	\item Total unemployment rate
-#' 	\item Male unemployment rate
-#' 	\item Femal unemployment rate
-#' 	\item Total Population average age
-#' 	\item Male population average age
-#'	\item Female population average age
+#' 	\item Unemployment rate, both sexes
+#' 	\item Unemployment rate, males
+#' 	\item Unemployment rate, females
+#' 	\item Municipality average age, both sexes
+#' 	\item Municipality average age, males
+#'	\item Municipality average age, females
 #' }
-#' 
-#' If \code{print} is \code{TRUE}, a \code{xlsx} file containing ten sheet, one  data frame per index, is saved into the folder \code{Outputs} by the name:
-#' \code{pob_ev_index_provincia_inicio-fin.xlsx}
+#' For a full description of the index, see the 2017 Socioeconomic Atlas of Extremadura
+#' If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing ten sheet -one  data frame per index- is saved into the folder \code{Outputs} which the name  \code{pob_ev_index_provincia_inicio-fin.xlsx}
 #'
 #' @references{
 #' Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).
 #' \url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
 #'}
-#' @family Manipulate functions
+#' @family manipulation functions
 #' @examples
 #' ind.ev(2005,2007,"Avila")
 #'

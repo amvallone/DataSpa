@@ -1,13 +1,13 @@
 #' @name pob.m.tot
 #' @rdname pob.m.tot
 #'
-#' @title  Total Female Population  data
-#' @description import into R the total female municpality population 
+#' @title  Female Population  data
+#' @description \code{pob.m.tot} imports into an R file the female population of Spain by municipality.
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spainish province.
+#' @param year a numerical value from 1996 and the latest available year, which indicates the year of the required database.
+#' @param provincia one of the 52 Spainish provinces.
 #'
-#' @return a  data frame conatining the municipality total female population 
+#' @return  It is a  data frame conatining the municipality total female population 
 #'
 #' @family Loading functions
 #' @examples

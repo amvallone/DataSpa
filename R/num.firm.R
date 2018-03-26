@@ -1,16 +1,16 @@
 #' @name num.firm
 #' @rdname num.firm
 #'
-#' @title Collect the number of firm at muncipality level
+#' @title Collects the set of firms at a municipality level
 #'
-#' @description Generate a data frame with the number of firms in each municipality
+#' @description \code{num.firm} generates a data frame with the set of firms in a selected municipality
 #'
 #' @param provincia one of the 52 Spanish provinces. See \link{getbase.pob} for details.
 #'
 #'
-#' @return A data frame 
+#' @return It is a data frame 
 #'
-#' @family firms functions
+#' @family firm functions
 #' @examples
 #' \dontrun{num.firm("Araba")}
 #'

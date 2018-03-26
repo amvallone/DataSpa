@@ -1,18 +1,17 @@
 #' @name pob.h.ev
 #' @rdname pob.h.ev
 #'
-#' @title Total male population evolution
+#' @title Panel of the male population at the municipality level for a period of time
 #' 
-#' @description Create a data drame containing the provincie total male population evolution at municipality level between the \code{inicio} and \code{fin} years.
-#' @param	inicio starting year of the panel. Must be higher than 1996.
+#' @description pob.h.ev. creates a data frame containing the panel of the male population of Spain at the municipality level for a period of time from the years \code{inicio} to \code{fin}.
+#' @param	inicio starting year of the panel, which must be higher than 1996.
 #' @param	fin last year of the panel.
 #' @param	provincia one of the 52 Spanish provinces.
-#' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
+#' @param print logical variable ‘do you need to print output file with the results? being FALSE the default value.
 #'
-#' @return a data frame
+#' @return It is a data frame
 #'
-#' @details If \code{print} is \code{TRUE}, a \code{xlsx} file containing the data frame is saved into the folder \code{Outputs} by the name:
-#' \code{pob_male_ev_provincia_inicio-fin.xlsx}
+#' @details If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing the data frame is saved in the folder \code{Outputs} called \code{pob_male_ev_provincia_inicio-fin.xlsx}
 #'
 #' @family Manipulate functions
 #' @examples

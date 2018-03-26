@@ -1,17 +1,17 @@
 #' @name num.firm.a
 #' @rdname num.firm.a
 #'
-#' @title Collect the number of self-employment at muncipality level
+#' @title Collects the set of self-employed at a municipality level
 #'
-#' @description Generate a data frame with the number of selff-employment in each municipality
+#' @description \codes{num.firm.a} generates a data frame with the set of self-employed in a selected municipality
 #'
 #' @param provincia one of the 52 Spanish provinces. See \link{getbase.pob} for details.
 #'
 #' 
 #'
-#' @return A data frame 
+#' @return It is a data frame 
 #'
-#' @family firms functions
+#' @family firm functions
 #' @examples
 #' \dontrun{num.firm.a("Araba")}
 #'

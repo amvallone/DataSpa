@@ -2,16 +2,16 @@
 #' @name paro
 #' @rdname paro
 #'
-#' @title import information of municipality unemploymet into R.
+#' @title Imports into R data of unemployed at a municipality level..
 #'
-#' @description Import the work force data of the province`s municipalities corresponding to the required. 
+#' @description \code{paro} imports the unemployed of the Spanish municipalities by province. 
 #'
-#' @param year A numerical value between 2005 and the current year indicating the year of the required data.
-#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.
+#' @param year a numerical value from 2005 and the latest available, which indicates the year of the required database.
+#' @param mes one of the 12 months –in Spanish language– indicating the month of the data collection. See \link{getbase.paro} for details.
 #' @param provincia one of the 52 Spain’s province.
 #'
-#' @return data frame containing the fallowing variables.
-#' - \code{cod} is the municipality identification number based in the INE codification.#' - \code{Name} the municipality name.#' - \code{Total unemployment} number of unemployed people in the municipality #' - \code{Total male unemployment} number of unemployes males in the municipality#' - \code{Total female unemployment} number of unemployees females in the municipality
+#' @return It is a data frame containing the fallowing variables:.
+#' - \code{cod} is the municipality identification number based in the INE codification#' - \code{Name} is the  municipality name.#' - \code{Total unemployment} unemployment is the  number of unemployed in the municipality #' - \code{Total male unemployment} is the number of unemployed males in the municipality#' - \code{Total female unemployment} is the number of unemployed females in the municipality
 #'
 #' @family Loading functions
 #' @examples

@@ -1,19 +1,18 @@
 #' @name pob.n.ev
 #' @rdname pob.n.ev
 #'
-#' @title Total national population evolution
+#' @title Panel of the national population at the municipality level for a period of time
 #' 
-#' @description Create a data drame containing the provincie total national population evolution at municipality level between the \code{inicio} and \code{fin} years.
-#' @param	inicio starting year of the panel. Must be higher than 1996.
+#' @description \code{pob.n.ev} creates a data frame containing the panel of the national population of Spain at the municipality level for a period of time from the years  \code{inicio} to \code{fin}.
+#' @param	inicio starting year of the panel, which must be higher than 1996
 #' @param	fin last year of the panel.
 #' @param	provincia one of the 52 Spanish provinces.
-#' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
+#' @param print logical variable ‘do you need to print a output file with the results?’ being FALSE the default value
 #'
-#' @return a data frame
+#' @return It is a data frame
 #'
 #' @family Loading functions
-#' @details If \code{print} is \code{TRUE}, a \code{xlsx} file containing the data frame is saved into the folder \code{Outputs} by the name:
-#' \code{pob_national_ev_provincia_inicio-fin.xlsx}
+#' @details If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing the data frame is saved in the folder \code{Outputs} which name \code{pob_national_ev_provincia_inicio-fin.xlsx}
 #'
 #' @family Manipulate functions
 #' @examples

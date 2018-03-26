@@ -12,17 +12,18 @@
 #'
 #' @title Collect information of municipality population phenomena.
 #'
-#' @description Download the population phenomena data of the province`s municipalities corresponding to the required. 
+#' @description \code{getbase.fen} downloads the population phenomena data of the province‘s municipalities corresponding to the required. 
 #'
 #' @param year A numerical value between 1996 and the current year indicating the year of the required data.
 #' @param provincia one of the 52 Spain’s province.
 #'
 #' @family download functions
-#' @details You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+#'
+#' @details The names of the Spanish provinces may or may not be called. If yes, employ capital letters as follows:
 #'	
 #' "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", "BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLON", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 #'
-#' @return a \code{xlsx} file saved in \code{data_poblacion} folder into the working directory wtih default name \code{fen_year_provincia}. 
+#' @return It is a \code{xlsx} which is host in \code{data_poblacion} folder iwhich, in turn, is located inside the working directory called \code{fen_year_provincia}. 
 #' @examples
 #' getbase.fen(2005,"Madrid")
 #'

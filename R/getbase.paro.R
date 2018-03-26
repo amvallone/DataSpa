@@ -1,20 +1,20 @@
 #' @name getbase.paro
 #' @rdname getbase.paro
 #'
-#' @title Collect information of municipality unemploymet.
+#' @title Collects information of unemployed at a municipality level.
 #'
-#' @description Download the work force data of the province`s municipalities corresponding to the required. 
+#' @description \code{getbase.paro} downloads data about the unemployed of the Spanish municipalities by province.
 #'
-#' @param year A numerical value between 2005 and the current year indicating the year of the required data.
-#' @param mes one of the 12 moths in Spanish indicating the moth when the data was collected.#' @param provincia one of the 52 Spainish province.#'
-#' @return a file host in \code{data_paro} folder into the working directory wtih name \code{paro_MUNI_provincia_mmyy.xls}.
+#' @param year a numerical value between 2005 and the last available, which indicates the year of the required database.
+#' @param mes oone of the 12 months –in Spanish language– indicating the month of the data collection.#' @param provincia one of the 52 Spainish provinces.#'
+#' @return It is a \code{xlsx} file host in the \code{data_paro} folder which, in turn, is located inside the working directory called  \code{paro_MUNI_provincia_mmyy.xls}.
 #' 
 #' @examples
 #' getbase.paro(2005,"julio","Madrid")
 #'
-#' @details the possible mes value are: "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre" and "diciembre"
+#' @details The month must be called as follows: "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre" and "diciembre".
 #' 
-#'	You can use in capital lletter or not the names of spanish provincies. The full list of spanish provincies is:
+#'	The names of the Spanish provinces may or may not be called. If yes, employ capital letters as follows:
 #'
 #' "ALBACETE", "ALICANTE", "ALMERIA", "ARABA", "ASTURIAS", "AVILA", "BADAJOZ", " BALEARES", "BARCELONA", "BIZKAIA", "BURGOS", "CACERES", "CADIZ", "CANTABRIA", "CASTELLON", "CIUDAD REAL", "CORDOBA", "A CORUÑA", "CUENCA", "GIPUZKOA", "GIRONA", "GRANADA", "GUADALAJARA", "HUELVA", "HUESCA", "JAEN", "LEON", "LLEIDA", "LUGO", "MADRID", "MALAGA", "MURCIA", "NAVARRA", "OURENSE", "PALENCIA",  "LAS PALMAS", "PONTEVEDRA", "LA RIOJA", "SALAMANCA", "TENERIFE", "SEGOVIA", "SEVILLA","SORIA", "TARRAGONA", "TERUEL", "TOLEDO", "VALENCIA", "VALLADOLID", "ZAMORA", "ZARAGOZA", "CEUTA" and "MELILLA"
 #'

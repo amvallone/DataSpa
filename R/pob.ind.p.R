@@ -1,30 +1,31 @@
 #' @name pob.ind.p
 #' @rdname pob.ind.p
 #'
-#' @title Calculate the population indexs
-#'
-#' @description Compute a set of population index
-#' @param	year A numerical value between 1996 and the current year indicating the year of the required data.
+#' @title Calculate some demographic indexes
+#' @description \code{pob.ind.p} computes a set of demographic indexes
+#' @param	year a numerical value from 1996 and the latest available year, which indicates the year of the required database.
 #' @param	provincia one of the 52 Spanish provinces.
-#' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
+#' @param print logical variable ‘do you need to print a output file with the results?’ being FALSE the default value.
 #'
-#' @return a data frame
+#' @return A data frame contains the spatial units, in rows, and the demographic index computed in  columns.
 #'
-#' @details in this function 10 index are comptuted:
+#' @details This function calculates ten demographical indexes:
 #' \itemize{
 #'	\item Childhood index
-#' 	\item Youthfulness index
-#' 	\item Eld index
+#' 	\item Youth index
+#' 	\item Third age index
 #' 	\item Dependence index
-#' 	\item Total unemployment rate
-#' 	\item Male unemployment rate
-#' 	\item Femal unemployment rate
-#' 	\item Total Population average age
-#' 	\item Male population average age
-#'	\item Female population average age
+#' 	\item Unemployment rate, both sexes
+#' 	\item Unemployment rate, males
+#' 	\item Unemployment rate, females
+#' 	\item Municipality average age, both sexes
+#' 	\item Municipality average age, males
+#'	\item Municipality average age, females
 #' }
-#' 
-#' The principal difference between this function and \code{pob.ind()} is the precision of the calculaton. This function use since the year 2011 the exact age definition for index imputation, instead that the aproximation use in \code{pob.ind}. For more details see the 2017 Socioeconomic Atlas of Extremadura.
+#' For a full description of the index, see the 2017 Socioeconomic Atlas of Extremadura 
+#'
+#' If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing ten sheet -one  data frame per index- is saved into the folder \code{Outputs} which the name  \code{pob_index_provincia_year.xlsx}
+#'The principal difference between this function and \link{pob.ind} is the precision of the calculation of the municipality average age. Since the year 2011, this function uses the one-year age variable for the computation instead of the five-year age approximation used in \code{pob.ind}. For more details, see the 2017 Socioeconomic Atlas of Extremadura.
 #'
 #' @references{
 #' Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (Spain).

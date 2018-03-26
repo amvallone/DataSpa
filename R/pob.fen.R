@@ -2,13 +2,13 @@
 #' @name pob.fen
 #' @rdname pob.fen
 #'
-#' @title  Principal municiplaity puplation phenomena
-#' @description import into R the principal population phenomena 
+#' @title  Number of births and deaths at a municipality level
+#' @description \code{pob.fen} imports into an R file two main demographic indexes at the municipality level: number of births and deaths. 
 #'
-#' @param year A numerical value between 1996 and 2015 year indicating the year of the required data.
+#' @param year a numerical value from 1996 and 2015, which indicates the year of the required database
 #' @param provincia one of the 52 Spainish province.
 #'
-#' @return a  data frame conatining the principal population phenomena 
+#' @return It is a data frame containing two main demographic indexes: 
 #'	\itemize{
 #'		\item \code{Birth} number of birth in the municipality#'		\item \code{Deaths} Number of death in the municipality 
 #'	}

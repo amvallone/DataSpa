@@ -1,13 +1,13 @@
 #' @name pob.n.tot
 #' @rdname pob.n.tot
 #'
-#' @title  Total National Population  data
-#' @description import into R the total national municpality population 
+#' @title  National Population  data
+#' @description \code{pob.n.tot} imports into an R file the national population of Spain by municipality. 
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spainish province.
+#' @param year a numerical value from 1996 and the latest available year, which indicates the year of the required database.
+#' @param provincia one of the 52 Spainish provinces.
 #'
-#' @return a  data frame conatining the municipality total national population 
+#' @return It is a data frame containing the municipality national population of Spain. 
 #'
 #' @family Loading functions
 #' @examples

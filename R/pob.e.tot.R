@@ -1,13 +1,13 @@
 #' @name pob.e.tot
 #' @rdname pob.e.tot
 #'
-#' @title  Total Foreign Population  data
-#' @description import into R the total foreign municpality population 
+#' @title  Total Foreign Population
+#' @description \code{pob.e.tot} imports into an R file the municipality total foreign population. 
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spainish province..
+#' @param year a numerical value from 1996 and the latest available year, which indicates the year of the required database.
+#' @param provincia one of the 52 Spainish provinces.
 #'
-#' @return a  data frame conatining the municipality total foreign population 
+#' @return It is a data frame containing the municipality total foreign population 
 #'
 #' @family Loading functions
 #' @examples

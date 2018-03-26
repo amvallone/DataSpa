@@ -1,18 +1,17 @@
 #' @name pob.e.ev
 #' @rdname pob.e.ev
 #'
-#' @title Total foreign population evolution
+#' @title Panel of foreign population at a municipality level for a period of time
 #' 
-#' @description Create a data drame containing the provincie total foreign population evolution at municipality level between the \code{inicio} and \code{fin} years.
-#' @param	inicio starting year of the panel. Must be higher than 1996.
-#' @param	fin last year of the panel.
+#' @description \code{pob.e.ev} creates a data frame with a panel of  total foreign population at a municipality level for a period of time from the  \code{inicio} to \code{fin}.
+#' @param	inicio starting year of the panel, which must be higher than 1996.
+#' @param	last year of the panel.
 #' @param	provincia one of the 52 Spanish provinces.
-#' @param print Logical variable, do you need print a output file with the results?. Default value is FALSE
+#' @param print logical variable ‘do you need print a output file with the results?’ for which FALSE is the default value
 #'
-#' @return a data frame
+#' @return It is a data frame
 #'
-#' @details If \code{print} is \code{TRUE}, a \code{xlsx} file containing the data frame is saved into the folder \code{Outputs} by the name:
-#' \code{pob_foreign_ev_provincia_inicio-fin.xlsx}
+#' @details If \code{print} is set to \code{TRUE}, an \code{xlsx} file containing the data frame is saved int the folder \code{Outputs} called \code{pob_foreign_ev_provincia_inicio-fin.xlsx}
 #'
 #' @family Manipulate functions
 #' @examples

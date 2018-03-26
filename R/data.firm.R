@@ -1,17 +1,17 @@
 #' @name data.firm
 #' @rdname data.firm
 #'
-#' @title Collect firm information at muncipality level
+#' @title Collects information of firms at a municipality level
 #'
-#' @description Generate a data frame of firms information of a particular municipality
+#' @description Generate a data frame of firm information of a particular municipality
 #'
 #' @param provincia one of the 52 Spanish provinces. See \link{getbase.pob} for details.
 #'
-#' @details is an interative function, require the selection of a particular municipality. 
+#' @details It is an interactive function, which requires the selection of a particular municipality. 
 #'
-#' @return A data frame function containing the following variables for each company: location (province, municipality, address, geographic coordinates), company characteristics (name, birth, legal form, social object), main figures (number of employees, social capital, sales), economic activity codes and firm URL
+#' @return A data frame containing the following variables for each company: location (province, municipality, address, geographic coordinates), company characteristics (name, birth, legal form, social object), main figures (number of employees, social capital, sales), economic activity codes and firm URL
 #'
-#' @family firms functions
+#' @family firm functions
 #' @examples
 #' \dontrun{data.firm("Ceuta")}
 #'

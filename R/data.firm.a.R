@@ -1,17 +1,17 @@
 #' @name data.firm.a
 #' @rdname data.firm.a
 #'
-#' @title Collect self-employment information at muncipality level
+#' @title Collects information of self-employed at a municipality level
 #'
-#' @description Generate a data frame of self-employment information of a particular municipality
+#' @description \code{data.firm.a} generates a data frame of self-employment information of a particular municipality
 #'
 #' @param provincia one of the 52 Spanish provinces. See \link{getbase.pob} for details.
 #'
-#' @details is an interative function, require the selection of a particular municipality. 
+#' @details It is an interactive function, which requires the selection of a particular municipality. 
 #'
-#' @return A data frame function containing the following variables for each self-employment: location (province, municipality, address), company characteristics (name, birth, legal form, social object), economic activity codes and self-employment URL
+#' @return A data frame containing the following variables for each self-employment: location (province, municipality, address), company characteristics (name, birth, legal form, social object), economic activity codes and self-employment URL
 #'
-#' @family firms functions
+#' @family firm functions
 #' @examples
 #' \dontrun{data.firm.a("Ceuta")}
 #'

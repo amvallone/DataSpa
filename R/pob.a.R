@@ -2,18 +2,18 @@
 #' @rdname pob.a
 #'
 #' @title  Population grouped by age data
-#' @description import into R the  population grouped by age data
+#' @description \code{pob.a} imports into an R file the municipality population database grouped by age
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spainish province.
+#' @param year a numerical value from 1996 and the last available, which indicates the year of the required database.
+#' @param provincia one of the 52 Spainish provinces.
 #'
-#' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
+#' @return It is a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables:: 
 #'
 #' \itemize{
 #' 		\item \code{cod} is the municipality identification number based in the INE codification.
 #'		\item \code{Name} the municipality name.
 #' 		\item \code{Total} total municipality population
-#' 		\item  101 variables containing the population grouped by age
+#' 		\item A hundred and one variables containing the population grouped by one-year age
 #'	}
 #'
 #' @family Loading functions

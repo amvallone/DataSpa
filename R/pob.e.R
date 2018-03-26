@@ -1,18 +1,18 @@
 #' @name pob.e
 #' @rdname pob.e
 #'
-#' @title  Population grouped by nationality and sex data
-#' @description import into R the  population grouped by nationality and sex data
+#' @title  Population grouped by nationality and sex
+#' @description \code{pob.e} imports into R the municipality population grouped by nationality and sexa
 #'
-#' @param year A numerical value between 1996 and the current year indicating the year of the required data.
-#' @param provincia one of the 52 Spainish province.
+#' @param year a numerical value from 1996 and the latest available, which indicates the year of the required database.
+#' @param provincia one of the 52 Spainish provinces.
 #'
-#' @return a list containing a total population data frame and the population grouped by sex. Each data frame contains the following variables: 
+#' @return It is a list containing a data frame with total population and population by sex. Each data frame contains the following variables: 
 #' \itemize{
 #' 		\item \code{cod} is the municipality identification number based in the INE codification.
-#'		\item \code{Name} the municipality name.
-#' 		\item \code{Total} total municipality population
-#' 		\item Three variables containing the population divided into Younger than 16 years old, Between 16 and 64 years old and Older than 65 years old grouped by total population, foreign population and national population.
+#'		\item \code{Name} is the municipality name.
+#' 		\item \code{Total} is the municipality population.
+#' 		\item Three variables containing information about population by age (younger than 16 years old, from 16 to 64 years old and older than 65 years old), which are, in turn, grouped by total population, foreign population and national population.
 #'	}
 #'
 #' @family Loading functions
