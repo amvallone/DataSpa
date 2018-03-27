@@ -1,0 +1,146 @@
+---
+title: "Female unemployment in Spanish municipalities"
+author: "Andres Vallone, Coro Chasco and Beatriz Sanchez"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval=TRUE, FALSE, echo=TRUE, encoding="UTF-8")
+```
+
+## 1. Introduction
+
+The DataSpa package provides several databases on population, unemployment, vehicle fleet and firms in Spain at the municipality level (LAU), information to which access is limited and problematic. The package supports different strategies based on URL parsing, PDF text extraction and web scraping through a set of functions built into the R package. Some knowledge of DataSpa is recommended for use of this package, which is available free of charge from the site https://github.com/amvallone/DataSpa.
+
+Unemployment variables for the Spanish municipalities are provided by Spain’s Public National Employment Service (SEPE) website, with certain access barriers. The URL parsing functions of the DataSpa package enable construction of a database on unemployment for the full set of over 8000 municipalities (unemployment by sex). Fig. 1 presents the general workflow of this URL parsing functionality designed for the databases on population and unemployment in Spain.
+
+![Workflow of the DataSpa URL parsing functions](Fig1.png)
+
+## 2. URL parsing functions
+
+### 2.1. Download function: `getbase.paro()`
+
+This function enables downloading of  the 52 individual provincial files of the **municipality unemployment variables** from the SEPE website (“Paro registrado”). These files are stored as ‘xlsx’ Excel files in the folder named ‘data_paro’, which is created in the working directory. It is a useful function for **users interested only in downloading the individual province files** (e.g., to work with them separately in any other software).
+
+To download these files, you must first install and load the package “DataSpa”:
+```{r message=FALSE, warning=FALSE, include=FALSE}
+devtools::install_github("amvallone/DataSpa")
+library(DataSpa)
+``` 
+
+Next, a vector with the province names should be defined:
+```{r, eval=TRUE, message=FALSE, warning=FALSE}
+prov<-c("ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS",
+       "AVILA","BADAJOZ","BALEARES","BARCELONA","BIZKAIA",
+       "BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLON",
+       "CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA",
+       "GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA",
+       "HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA",
+       "MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS",
+       "PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE",
+       "SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL",
+       "TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA",
+       "CEUTA","MELILLA")
+``` 
+
+Finally, the `getbase.paro()` function downloads the 52 Excel files to the 'data_paro' folder. For example, the unemployment data for the 30<sup>th</sup> of June of 2017 can be downloaded as follows:
+
+```{r message=FALSE, warning=FALSE, include=FALSE, eval=FALSE}
+for(i in seq_along(prov)){
+  getbase.paro(2017,"junio",prov[i])
+}
+``` 
+
+### 2.2. Loading function: `paro()`
+
+This function enables loading to R of the 52 Excel files previously downloaded from SEPE and stored in the ‘data_paro’ folder. If necessary, it can also call the `getbase.paro()` function to download the Excel files. Additionally, it creates a unique data frame with the unemployment database. For example, for the unemployment database (June 30<sup>th</sup>, 2017).
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+parot17 <- data.frame()
+for (i in seq_along(prov)){
+  print(i)
+  data <- paro(2017,"junio",prov[i])
+  parot17 <- rbind(parot17,data)
+}
+```
+
+Since the 52 province aggregates are also included, they must be removed in order to obtain a data frame. This data frame contains the unemployment variables, in columns, for the set of Spanish municipalities, in rows:
+
+```{r, eval=TRUE,echo=TRUE}
+paro17<-parot17[parot17$cod != 'Total', ]
+colnames(paro17)[3] <- "parot"
+colnames(paro17)[4] <- "paroh"
+colnames(paro17)[5] <- "parom"
+``` 
+
+### 2.3. Exportation of the unemployment database 
+
+The programme also permits exportation of the municipality unemployment database in text format:
+```{r, eval=TRUE,echo=TRUE}
+write.table(paro17, "paro17.txt", sep="\t")
+```
+
+## 3. Analysis of female unemployment by municipality
+
+We can obtain the basic descriptive statistics of female unemployment in Spanish municipalities on June 30<sup>th</sup>, 2017:
+
+```{r}
+parovar17<-data.frame(paro17$parot, paro17$paroh, paro17$parom)
+summary(parovar17)
+```
+
+As shown by the q-q plot, this is a highly right-skewed variable due to the heterogeneity of Spanish municipalities: in addition to a large set of small villages (61%) with fewer than 1,000 inhabitants, there are only 62 big cities over 100,000 inhabitants, which include the megalopolises of Madrid and Barcelona.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(qqplotr)
+library(gridExtra)
+qqnorm(paro17$parom,ylab ="Municipality Unemployment",
+       col = "red",
+       main="Normal Q-Q plot, Female unemployment, 2017");
+qqline(paro17$parom)
+```
+
+In order to avoid this size effect, it is advisable to transform female unemployment by municipality ‘i’ into a percentage share of the total unemployment:
+
+$$fem.un.share_{i}=(\dfrac{fem.unem_{i}}{tot.unem_{i}})*100$$
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+par(mfrow=c(1,2))
+paro17$pparom<-(paro17$parom/paro17$parot)*100
+qqnorm(paro17$pparom,ylab ="Female Unemployment pct",
+       col="green",
+       main="Normal Q-Q plot, Spain");
+qqline(paro17$pparom)
+hist(paro17$pparom, breaks=12, col="lightblue",
+     xlab="Female Unemployment pct", ylab="# municipalities",
+     main="Histogram, 2017")
+```
+
+Spatial representation of this variable on a map shows an ‘oil slick effect’ structure of share of female unemployment across Spanish municipalities, that is, higher in the main metropolitan areas, the Southern half of the Peninsula and along the coasts.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+require(ggplot2)
+muni17 <- xlsx::read.xlsx2("muni17.xlsx", 1)
+muni17$CODE <- as.character(muni17$CODE)
+muni17$XLON<-as.numeric(as.character(muni17$XLON))
+muni17$YLAT<-as.numeric(as.character(muni17$YLAT))
+colnames(paro17)[1] <- "CODE"
+paro17<-subset(paro17,select=c(CODE,parot,paroh,parom,pparom))
+muni17<-merge(x=muni17,y=paro17,
+              by.x=c("CODE"),by.y=c("CODE"),all.y=TRUE)
+mp17<-ggplot(muni17,aes(x=XLON,y=YLAT,color=pparom)) +
+  geom_point(size=2) +
+  labs(subtitle="Spain, 30th June 2017",y="Latitude (North)",
+       x="Longitude (West)",
+       title="Female unemployment pct",
+       caption="Source: SEPE")
+mp17+scale_color_gradient(low="yellow",high="black") +
+  theme_bw() + 
+  theme(axis.title=element_text(face="bold.italic",
+                                size="12", color="brown"),
+        legend.position="right")
+```
+
