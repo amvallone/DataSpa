@@ -60,8 +60,8 @@ pob.m.tot<-function(year,provincia){
 		colnames(salida)<-fila
 		dd<-h-t-1
 		s.m<-salida[m:(m+dd),1:3]
-		s.m<-s.m[-1,]
-		s.m[1,2]<-"Todos"
+		s.m<-s.m[-c(1:2),]
+		#s.m[1,2]<-"Todos"
 		s.m
 }
 

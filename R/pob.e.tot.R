@@ -63,7 +63,7 @@ pob.e.tot<-function(year,provincia){
 			} else {
 				s.t<-salida[t:(h-1),c(1,2,5)]
 			}
-		s.t<-s.t[-1,]
-		s.t[1,2]<-"Todos"
+		s.t<-s.t[-c(1:2),]
+		#s.t[1,2]<-"Todos"
 		s.t
 }

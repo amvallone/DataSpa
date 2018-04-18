@@ -10,7 +10,7 @@
 #'
 #' @return It is a data frame containing the following variables: the municipality name, number and average age of vehicle fleet, type of vehicles (cars, vans, trucks, motorcycles, buses, etc) and some other variables related to the register of drivers, accidents and vehicle taxes. 
 #'
-#' @details \code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias", "Castilla y Leon", "Castilla-La Mancha", "Cataluña", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
+#' @details \code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias","Cantarias", "Castilla y Leon", "Castilla La Mancha", "Cataluña", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja" and "Ceuta y Melilla".
 #' For more detail information about Spanish Autonomus Comunities and provincies visit \href{https://es.wikipedia.org/wiki/Anexo:Provincias_y_ciudades_aut%C3%B3nomas_de_Espa%C3%B1a}{Wikipedia Anexo}
 #' 
 #' @examples
@@ -22,15 +22,22 @@
 
 parque.aut<-function(year,ca,provincia){
 	year<-as.character(year)
-	ca<-tolower(ca)
-	if(ca=="catalu\u00F1a"){ca<-"catalunia"}
-	if(ca=="comunidad valenciana"){ca<-"valencia"}
-	if(ca=="pais vasco"){ca<-"paisvasco"}
-	if(ca=="la rioja"){ca<-"la-rioja"}
-	if(ca=="ceuta y melilla"){ca<-"ceuta-melilla"}
-	if(ca=="castilla y leon"){ca<-"castilla-y-leon"}
-	if(ca=="castilla-la mancha"){ca<-"castilla-la-mancha"}
-	prov<-a.letter(tolower(provincia))
+	ca<-tolower(a.letter(toupper(ca)))
+	if(ca=="cataluna"){ca<-"catalunia"}
+	if(ca=="comunidad_valenciana"){ca<-"valencia"}
+	if(ca=="pais_vasco"){ca<-"paisvasco"}
+	if(ca=="la_rioja"){ca<-"la-rioja"}
+	if(ca=="ceuta"){ca<-"ceuta-melilla"}
+	if(ca=="melilla"){ca<-"ceuta-melilla"}
+	if(ca=="castilla_y_leon"){ca<-"castilla-y-leon"}
+	if(ca=="castilla_la_mancha"){ca<-"castilla-la-mancha"}
+	prov<-tolower(a.letter(provincia))
+	if(prov=="araba"){prov<-"alava"}
+	if(prov=="ciudad_real"){prov<-"ciudad-real"}
+	if(prov=="a_coruna"){prov<-"corunia"}
+	if(prov=="las_palmas"){prov<-"las-palmas"}
+	if(prov=="la_rioja"){prov<-"la-rioja"}
+	if(prov=="tenerife"){prov <- "santa-cruz-de-tenerife"}
 	##Crea los directorios
 	if (dir.exists(file.path(getwd(),"DGT"))==FALSE){
 		dir.create(file.path(getwd(),"DGT"))	
@@ -67,7 +74,9 @@ parque.aut<-function(year,ca,provincia){
 	files<-paste(year,"_",cod,"_",nn.mun,".pdf",sep="")
 	for (j in 1:length(files)){
 		if(sum(dir(dest)==files[j])==0){
+			tryCatch({
 			download.file(mun[j],paste(dest,"/",files[j],sep=""),mode='wb')
+			}, error=function(e) return(e))
 		}
 	}
 	myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
@@ -80,7 +89,7 @@ parque.aut<-function(year,ca,provincia){
 		base<-data.frame()
 		if(as.numeric(year)<2015){
 			for(k in 1:length(dataset)){
-				data<-read.table(dataset[k],sep="\t",skip=1)
+				data<-read.table(dataset[k],quote="\t",sep="\t",skip=1)
 				a<-capture.output(data)	
 				Seg<-matrix("A",8,2)
 					for (i in 4:11){
@@ -134,14 +143,14 @@ parque.aut<-function(year,ca,provincia){
 					}
 				salida<-t(rbind(Nombre, parque, antiguedad, Censo.Cond, Seg))
 				cols<-salida[1,]
-				colnames(salida)<-cols
+				ifelse(k==1,colnames(salida)<-cols,colnames(salida)<-names(base))
 				salida<-salida[-1,]
 				salida<-as.data.frame(t(salida)) ; rownames(salida)<-NULL	
 				base<-rbind(base,salida)
 			}
 		} else {
 			for(k in 1:length(dataset)){
-				data<-read.table(dataset[k],sep="\t",skip=1)
+				data<-read.table(dataset[k],quote="\t",sep="\t",skip=1)
 				a<-capture.output(data)	
 				Seg<-matrix("A",5,2)
 				for (i in 4:8){
@@ -195,7 +204,7 @@ parque.aut<-function(year,ca,provincia){
 			}
 			salida<-t(rbind(Nombre, parque, antiguedad, Censo.Cond, Seg))
 			cols<-salida[1,]
-			colnames(salida)<-cols
+			ifelse(k==1,colnames(salida)<-cols,colnames(salida)<-names(base))
 			salida<-salida[-1,]
 			salida<-as.data.frame(t(salida)) ; rownames(salida)<-NULL	
 			base<-rbind(base,salida)

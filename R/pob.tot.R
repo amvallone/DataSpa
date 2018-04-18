@@ -56,7 +56,7 @@ pob.tot<-function(year,provincia){
 		fila<-c("Cod","Municipio","Total")
 		colnames(salida)<-fila
 		s.t<-salida[t:(h-1),1:3]
-		s.t<-s.t[-1,]
-		s.t[1,2]<-"Todos"
+		s.t<-s.t[-c(1:2),]
+		#s.t[1,2]<-"Todos"
 		s.t
 }

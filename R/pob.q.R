@@ -57,9 +57,9 @@ pob.q<-function(year,provincia){
 		salida[,2]<-as.character(salida[,2])
 		salida[,3:dim(salida)[2]]<-apply(salida[,3:dim(salida)[2]],2,as.numeric.factor)
 		dd<-h-t-1
-		s.t<-salida[t:(h-1),]
-		s.h<-salida[h:(m-1),]
-		s.m<-salida[m:(m+dd),]
+		s.t<-salida[(t+1):(h-1),]
+		s.h<-salida[(h+1):(m-1),]
+		s.m<-salida[(m+1):(m+dd),]
 		out<-list(s.t[-1,],s.h[-1,],s.m[-1,])
 		names(out)<-c("Ambos Sexos","Hombre","Mujeres")
 		out

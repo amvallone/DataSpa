@@ -50,6 +50,7 @@ pob.fen<-function(year,provincia){
 		}
 		cifras<-as.data.frame(datos[,2:3])
 		cifras<-apply(cifras,2,as.numeric.factor)
+		if (is.null(dim(cifras))){ cifras <- t(as.matrix(cifras)) }
 		ids<-as.data.frame(cbind(codigo,municipio))
 		salida<-cbind(ids,cifras)
 		colnames(salida)<-c("Cod","Municipio","Nacidos","Fallecidos")

@@ -54,9 +54,9 @@ pob.e<-function(year,provincia){
 		fila<-c("Cod","Municipio","Total","Total Menores de 16 a\u00F1os","Total De 16 a 64 a\u00F1os","Total De 65 y mas a\u00F1os", "Total Esp","Esp Menores de 16 a\u00F1os","Esp De 16 a 64 a\u00F1os","Esp De 65 y mas a\u00F1os","Total Extr","Extr Menores de 16 a\u00F1os","Extr De 16 a 64 a\u00F1os","Extr De 65 y mas a\u00F1os")
 		colnames(salida)<-fila
 		dd<-h-t-1
-		s.t<-salida[t:(h-1),]
-		s.h<-salida[h:(m-1),]
-		s.m<-salida[m:(m+dd),]
+		s.t<-salida[(t+1):(h-1),]
+		s.h<-salida[(h+1):(m-1),]
+		s.m<-salida[(m+1):(m+dd),]
 		out<-list(s.t[-1,],s.h[-1,],s.m[-1.])
 		names(out)<-c("Ambos Sexos","Hombre","Mujeres")
 		out

@@ -26,25 +26,33 @@ paro<-function(year,mes="julio",provincia){
 	Cap<-provincia
 	provincia<-toupper(provincia)
 	provincia<-a.letter(provincia)
+	if(as.numeric(year)<=2011){ 
+		if(provincia=="ARABA"){provincia1 <- "ALAVA"}
+		else if(provincia=="BIZKAIA"){provincia1 <- "VIZCAYA"}
+		else if(provincia=="GIPUZKOA"){provincia1 <- "GUIPUZCOA"}
+		else {provincia1 <- provincia}
+		} else {
+			provincia1 <- provincia
+			}
 	mes<-tolower(mes)
 	nn.mes<-seq(1,12,1)
 	names(nn.mes)<-c("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
 	cod<-paste("0",nn.mes[mes],substr(year,3,4),sep="")
 	dirc<-paste(getwd(),"/data_paro/",sep="")
-	name<-paste(paste("MUNI",provincia,cod,sep="_"),".xls",sep="")
-	file<-paste("paro_",name,sep="")
-	if(sum(dir(dirc)==file)==0){
+	name1<-paste(paste("MUNI",provincia1,cod,sep="_"),".xls",sep="")
+	file1<-paste("paro_",name1,sep="")
+	if(sum(dir(dirc)==file1)==0){
 		getbase.paro(year,mes,provincia)
 	}
 	if(as.numeric(year)<2013){
 		cod1<-paste("0",nn.mes[mes],"16",sep="")
-		name1<-paste(paste("MUNI",provincia,cod1,sep="_"),".xls",sep="")
-		file1<-paste("paro_",name1,sep="")
-		if(sum(dir(dirc)==file1)==0){
+		name<-paste(paste("MUNI",provincia,cod1,sep="_"),".xls",sep="")
+		file<-paste("paro_",name,sep="")
+		if(sum(dir(dirc)==file)==0){
 			getbase.paro(2016,mes,provincia)
 		}
-		open<-paste(dirc,file1,sep="")
-		abre<-paste(dirc,file,sep="")
+		open<-paste(dirc,file,sep="")
+		abre<-paste(dirc,file1,sep="")
 		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
 		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
@@ -65,7 +73,7 @@ paro<-function(year,mes="julio",provincia){
 				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]
 			}
 		}
-		if(stri_count(datos[8,1],regex="[[:number:]]")==4){
+		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){
 			cero<-rep(0,dim(datos)[1])
 			datos[,1]<-paste(cero,datos[,1],sep="")
 		}
@@ -82,14 +90,15 @@ paro<-function(year,mes="julio",provincia){
 		colnames(salida)<-c("cod","nombre","paro total","paro total hombres","paro total mujeres")
 		salida[which(is.na(salida[,3])),3]<-0
 		salida[which(is.na(salida[,4])),4]<-0
-		salida[which(is.na(salida[,5])),5]<-0
-		salida<-rbind(salida,rep(NA,5))
+		#salida[which(is.na(salida[,5])),5]<-0
+		#salida<-rbind(salida,rep(NA,5))
 		nd<-dim(salida)[1]
-		salida[nd,1]<-"Total"
-		salida[nd,2]<-Cap
-		salida[nd,3]<-sum(salida[1:nd-1,3])
-		salida[nd,4]<-sum(salida[1:nd-1,4])
-		salida[nd,5]<-sum(salida[1:nd-1,5])
+		salida <- salida[-nd,]
+		#salida[nd,1]<-"Total"
+		#salida[nd,2]<-Cap
+		#salida[nd,3]<-sum(salida[1:nd-1,3])
+		#salida[nd,4]<-sum(salida[1:nd-1,4])
+		#salida[nd,5]<-sum(salida[1:nd-1,5])
 		fallas<-apply(as.matrix(salida[,1]),1,nchar)
 		n.fallas<-which(fallas!=5)
 		if (length(n.fallas)!=0){
@@ -99,7 +108,7 @@ paro<-function(year,mes="julio",provincia){
 		}
 		salida
 	} else {
-		abre<-paste(dirc,file,sep="")
+		abre<-paste(dirc,file1,sep="")
 		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
 		datos<-datos[-dim(datos)[1],]
@@ -122,13 +131,14 @@ paro<-function(year,mes="julio",provincia){
 		salida[which(is.na(salida[,3])),3]<-0
 		salida[which(is.na(salida[,4])),4]<-0
 		salida[which(is.na(salida[,5])),5]<-0
-		salida<-rbind(salida,rep(NA,5))
+		#salida<-rbind(salida,rep(NA,5))
 		nd<-dim(salida)[1]
-		salida[nd,1]<-"Total"
-		salida[nd,2]<-Cap
-		salida[nd,3]<-sum(salida[1:nd-1,3])
-		salida[nd,4]<-sum(salida[1:nd-1,4])
-		salida[nd,5]<-sum(salida[1:nd-1,5])
+		salida <- salida[-nd,]
+		#salida[nd,1]<-"Total"
+		#salida[nd,2]<-Cap
+		#salida[nd,3]<-sum(salida[1:nd-1,3])
+		#salida[nd,4]<-sum(salida[1:nd-1,4])
+		#salida[nd,5]<-sum(salida[1:nd-1,5])
 		}
 	salida
 }

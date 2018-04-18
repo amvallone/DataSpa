@@ -28,6 +28,11 @@ getbase.paro<-function(year,mes,provincia){
 		}
 	provincia<-toupper(provincia)
 	provincia<-a.letter(provincia)
+	if(as.numeric(year)<=2011){ 
+		if(provincia=="ARABA"){provincia <- "ALAVA"}
+		if(provincia=="BIZKAIA"){provincia <- "VIZCAYA"}
+	 	if(provincia=="GIPUZKOA"){provincia <- "GUIPUZCOA"}
+		}
 	mes<-tolower(mes)
 	nn.mes<-seq(1,12,1)
 	names(nn.mes)<-c("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre")
