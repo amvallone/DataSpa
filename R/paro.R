@@ -53,7 +53,7 @@ paro<-function(year,mes="julio",provincia){
 		}
 		open<-paste(dirc,file,sep="")
 		abre<-paste(dirc,file1,sep="")
-		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
+		datos<-xlsx::read.xlsx(abre,sheetName="PARO", encoding ="UTF-8")
 		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
 		idn<-apply(idn,2,as.character)
@@ -81,8 +81,10 @@ paro<-function(year,mes="julio",provincia){
 		cod<-datos[,1]
 		n.m<-datos[,2]
 		total<-as.numeric.factor(datos[,3])
-		total.h<-NA
-		total.m<-NA
+		total.h<-as.numeric(datos[,4]) + as.numeric(datos[,5]) + as.numeric(datos[,6])
+		total.m<-as.numeric(datos[,7])+as.numeric(datos[,8])+as.numeric(datos[,9])
+		#total.h<-NA
+		#total.m<-NA
 		salida<-as.data.frame(cbind(cod,n.m,total,total.h,total.m))
 		salida[,3:5]<-apply(salida[,3:5],2,as.numeric)
 		salida[,1]<-as.character(salida[,1])
@@ -90,7 +92,7 @@ paro<-function(year,mes="julio",provincia){
 		colnames(salida)<-c("cod","nombre","paro total","paro total hombres","paro total mujeres")
 		salida[which(is.na(salida[,3])),3]<-0
 		salida[which(is.na(salida[,4])),4]<-0
-		#salida[which(is.na(salida[,5])),5]<-0
+		salida[which(is.na(salida[,5])),5]<-0
 		#salida<-rbind(salida,rep(NA,5))
 		nd<-dim(salida)[1]
 		salida <- salida[-nd,]
@@ -109,7 +111,7 @@ paro<-function(year,mes="julio",provincia){
 		salida
 	} else {
 		abre<-paste(dirc,file1,sep="")
-		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
+		datos<-xlsx::read.xlsx(abre,sheetName="PARO", encoding ="UTF-8")
 		datos<-apply(datos,2,as.character)
 		datos<-datos[-dim(datos)[1],]
 		p<-max(which(is.na(datos[,1])))+1
