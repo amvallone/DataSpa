@@ -7,13 +7,16 @@ Authors@R: c( person(given = "Andres",
                      email = "avallonev@ucn.cl"), 
 	      person(given = "Coro", 
 	             family = "Chasco", 
-	             role = "ctb", email = "coro.chasco@guam.es") )
+	             role = "ctb", email = "coro.chasco@uam.es"),
+	      person(given = "Beatriz", 
+	             family = "Sanchez", 
+	             role = "ctb", email = "") )
 Description: Collect data from different sources for Spanish municipalities.
 Depends: R (>= 3.1),
 		stringr,
 		rvest,
 		xlsx
-Imports: XML, stringi, xml2
+Imports: XML, stringi, xml2, pbapply
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

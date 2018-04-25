@@ -3,33 +3,50 @@
 
 
 
-
 empresa<-function(http){
 			pg<-read_html(http)
-			Nombre<-str_replace_all(html_text(html_node(pg,css="h3")), "([\n\r\t])", "")
-			p1<-html_children(html_nodes(html_node(pg,css=".section-content"),css="dl"))
-			Forma_juridica<-html_text(p1[grep("Forma jur\u00EDdica",capture.output(p1))],trim=TRUE)
-			Tiempo_contituida<-sub("Constituida hace.","",str_replace_all(html_text(p1[grep("Constituida hace",capture.output(p1))],trim=TRUE), "([\n\r\t])", ""))
-			if(length(Tiempo_contituida)==0) {Tiempo_contituida<-"N.I"}
-			Dir<-html_text(html_children(html_children(p1[grep("Direcci\u00F3n de",capture.output(p1))-1])))
-			if (length(Dir)==0) {Dir<-html_text(html_nodes(p1[grep("Direcci\u00F3n",capture.output(p1))],css="span"))}
-			Direccion<-str_trim(str_replace_all(Dir[1], "([\n\r\t,])", ""))
-			Cod_postal<-str_trim(str_replace_all(Dir[2], "([\n\r\t,])", ""))
-			Mun<-simpleCap(str_trim(str_replace_all(Dir[3], "([\n\r\t,])", "")))
-			Prov<-simpleCap(str_trim(str_replace_all(Dir[4], "([\n\r\t])", "")))
-			Objetivo_social<-str_replace_all(html_text(html_nodes(p1[grep("Objeto social",capture.output(p1))],css="span")), "([\n\r\t])", "")
-			if (length(Objetivo_social)>1) {Objetivo_social<-paste(Objetivo_social[1],Objetivo_social[2],sep="")}
-			if(length(Objetivo_social)==0) {Objetivo_social<-"N.I"}
-			C.A.E<-html_text(p1[grep("CNAE",capture.output(p1))])
-			CodCAE<-na.omit(as.numeric(unlist(strsplit(C.A.E,"[^[:digit:]]"))))[1]
-			DescCAE<-sub("[[:digit:]]+","",str_replace_all(C.A.E, "([\n\r\t])", ""))
-			if(length(DescCAE)==0){ DescCAE<-NA}
-			S.I.C<-html_text(p1[grep("SIC",capture.output(p1))])
-			CodSIC<-na.omit(as.numeric(unlist(strsplit(S.I.C,"[^[:digit:]]"))))[1]
-			DescSIC<-sub("[[:digit:]]+","",str_replace_all(S.I.C, "([\n\r\t])", ""))
-			if(length(DescSIC)==0){ DescSIC<-NA}
+			nodes <- html_node(pg,css=".section-content")
+			tabla <- html_table(html_children(nodes))[[1]]
+			Nombre <- ifelse(length(which(tabla[,1]=="Nombre:"))==0,NA,tabla[which(tabla[,1]=="Nombre:"),2])
+			if(is.na(Nombre)){Nombre<-str_replace_all(html_text(html_node(pg,css="h3")), "([\n\r\t])", "")}
+			CIF <- ifelse(length(which(tabla[,1]=="CIF:"))==0,NA,tabla[which(tabla[,1]=="CIF:"),2])
+			Forma_juridica <- ifelse(length(which(tabla[,1]=="Forma jurídica:"))==0,NA,tabla[which(tabla[,1]=="Forma jurídica:"),2])
+			Nace <- ifelse(length(which(tabla[,1]=="Constituida hace:"))==0,"N.I",tabla[which(tabla[,1]=="Constituida hace:"),2])
+			Objetivo_social <- ifelse(length(which(tabla[,1]=="Objeto social:"))==0,"N.I",str_replace_all(tabla[which(tabla[,1]=="Objeto social:"),2], "([\n\r\t])", ""))
+			C.A.E <- ifelse(length(which(tabla[,1]=="CNAE:"))==0,NA,tabla[which(tabla[,1]=="CNAE:"),2])
+			if(!is.na(C.A.E)){
+				CodCAE<-na.omit(unlist(strsplit(C.A.E,"[^[:digit:]]")))[1]
+				DescCAE<-sub("[[:digit:]]+","",str_replace_all(C.A.E, "([\n\r\t])", ""))
+				if(length(DescCAE)==0){ DescCAE<-NA}
+			} else {
+				CodCAE<-NA
+				DescCAE<-NA
+			}
+			S.I.C <- ifelse(length(which(tabla[,1]=="SIC:"))==0,NA,tabla[which(tabla[,1]=="SIC:"),2])
+			if(!is.na(S.I.C)){
+				CodSIC<-na.omit(unlist(strsplit(S.I.C,"[^[:digit:]]")))[1]
+				DescSIC<-sub("[[:digit:]]+","",str_replace_all(S.I.C, "([\n\r\t])", ""))
+				if(length(DescSIC)==0){ DescSIC<-NA}
+			} else {
+				CodSIC<-NA
+				DescSIC<-NA
+			}
+			Dir <- ifelse(length(which(tabla[,1]==paste("Direcci","\u00F3","n:",sep="")))==0,NA,tabla[which(tabla[,1]==paste("Direcci","\u00F3","n:",sep="")),2])
+			if(!is.na(Dir)){
+				Dd <- html_children(html_node(nodes,"span"))
+				if(length(Dd)==0){Dd <- html_nodes(nodes,"span")}
+				Direccion <- str_trim(str_replace_all(html_text(Dd[1]), "([\n\r\t,])", ""))
+				Cod_postal <- str_trim(str_replace_all(html_text(Dd)[2], "([\n\r\t,])", ""))
+				Mun <- simpleCap(str_trim(str_replace_all(html_text(Dd)[3], "([\n\r\t,])", "")))
+				Prov <- simpleCap(str_trim(str_replace_all(html_text(Dd)[4], "([\n\r\t,])", "")))
+			} else {
+				Direccion <- NA
+				Cod_postal <- NA
+				Mun <- NA
+				Prov <- NA
+			}
 			p2<-html_node(pg,css="#resumen_general")
-			data<-html_text(html_nodes(p2,css="p")[2])
+			data <- html_text(html_children(p2)[3])
 			Tramo_cap_social<-str_match(data,paste("en el tramo de ","(.+)","\u20AC,",sep=""))[,2]
 			Tramo_empleados<-sub(" y ","-",str_match(data,paste("empleados de entre ","(.+)"," y un importe",sep=""))[,2])
 			Tramo_ventas<-sub(" y ","-",str_match(data,paste("ventas de entre ","(.+)","\u20AC.",sep=""))[,2])
@@ -44,7 +61,28 @@ empresa<-function(http){
 			lng<-as.numeric(html_text(geo[grep("longitude",capture.output(geo))-1]))
 			if (sum(lat)==0){lat<-0 ; lng<-0}
 			web_aexor<-http
-			fila<-(cbind(Prov,Mun,Nombre,Forma_juridica,Tiempo_contituida, Objetivo_social,Direccion,Cod_postal,CodCAE,DescCAE,CodSIC,DescSIC,Tramo_cap_social,Tramo_empleados,Tramo_ventas,M_c_cap_social,M_c_empleados,M_c_ventas,lat,lng,web_aexor))
+			fila<-data.frame("Provinciaa"=Prov,
+							"Municipalidad"=Mun,
+							"Nombre"=Nombre,
+							"CIF"=CIF,
+							"Forma Juridica"=Forma_juridica,
+							"Constituida Hace"=Nace,
+							"Objeto Social"= Objetivo_social,
+							"Direccion"=Direccion,
+							"Codigo Postal"=Cod_postal,
+							"C.N.A.E"=CodCAE,
+							"Descripción C.N.A.E"=DescCAE,
+							"S.I.C"=CodSIC,
+							"Descripcion S.I.C"=DescSIC,
+							"Tramo Capital Social"=Tramo_cap_social,
+							"Tramo Empleados"=Tramo_empleados,
+							"Tramo Ventas"=Tramo_ventas,
+							"Marca de clase Cap. Social"=M_c_cap_social,
+							"Marca de clases empleados"=M_c_empleados,
+							"Marca de clase ventas"=M_c_ventas,
+							"Latitud"=lat,
+							"Longitud"=lng,
+							"URL en Axesor"=web_aexor,stringsAsFactors = FALSE)
 			return(fila)
 }
 

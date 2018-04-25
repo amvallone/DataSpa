@@ -37,18 +37,9 @@ data.firm.a<-function(provincia){
 	set
 	lista<-lista.empresa.a(set)
 	cat("se analizan",length(lista),"casos \n")
-	salida<-(matrix(0,nrow=length(lista),ncol=12))
-	for (i in 1:length(lista)){
-		emp<-empresa.a(lista[i])
-		if(dim(emp)[1]>1){
-			salida[i,]<-emp[1]	
-		} else {
-			salida[i,]<-emp
-		}
-		cat("iter",i,"\n")
-		#Sys.sleep(0.2)
-	}
-	salida
+	pp<-pbapply::pblapply(lista,empresa.a)
+	salida <- do.call(rbind.data.frame,pp)
+	return(salida)
 }
 
 

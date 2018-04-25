@@ -1,3 +1,4 @@
+#' @import pbapply
 #' @name data.firm
 #' @rdname data.firm
 #'
@@ -37,18 +38,9 @@ data.firm<-function(provincia){
 	set
 	lista<-unlist(sapply(set,lista.empresa,USE.NAMES=FALSE))
 	cat("se analizan",length(lista),"casos \n")
-	salida<-(matrix(0,nrow=length(lista),ncol=21))
-	for (i in 1:length(lista)){
-		emp<-empresa(lista[i])
-		if(dim(emp)[1]>1){
-			salida[i,]<-emp[1]	
-		} else {
-			salida[i,]<-emp
-		}
-		cat("iter",i,"\n")
-		#Sys.sleep(0.2)
-	}
-	salida
+	pp<-pbapply::pblapply(lista,empresa)
+	salida <- do.call(rbind.data.frame,pp)
+	return(salida)
 }
 
 
