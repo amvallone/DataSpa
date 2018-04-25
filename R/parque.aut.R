@@ -14,7 +14,7 @@
 #' For more detail information about Spanish Autonomus Comunities and provincies visit \href{https://es.wikipedia.org/wiki/Anexo:Provincias_y_ciudades_aut%C3%B3nomas_de_Espa%C3%B1a}{Wikipedia Anexo}
 #' 
 #' @examples
-#' \dontrun{parque.aut(2014,"Ceuta y Melilla","Ceuta")}
+#' \dontrun{parque.aut(2014,"Ceuta","Ceuta")}
 #'
 #' @export
 
@@ -22,6 +22,7 @@
 
 parque.aut<-function(year,ca,provincia){
 	year<-as.character(year)
+	provincia <- toupper(provincia)
 	ca<-tolower(a.letter(toupper(ca)))
 	if(ca=="cataluna"){ca<-"catalunia"}
 	if(ca=="comunidad_valenciana"){ca<-"valencia"}

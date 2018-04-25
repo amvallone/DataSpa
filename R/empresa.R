@@ -10,7 +10,7 @@ empresa<-function(http){
 			Nombre <- ifelse(length(which(tabla[,1]=="Nombre:"))==0,NA,tabla[which(tabla[,1]=="Nombre:"),2])
 			if(is.na(Nombre)){Nombre<-str_replace_all(html_text(html_node(pg,css="h3")), "([\n\r\t])", "")}
 			CIF <- ifelse(length(which(tabla[,1]=="CIF:"))==0,NA,tabla[which(tabla[,1]=="CIF:"),2])
-			Forma_juridica <- ifelse(length(which(tabla[,1]=="Forma jurídica:"))==0,NA,tabla[which(tabla[,1]=="Forma jurídica:"),2])
+			Forma_juridica <- ifelse(length(which(tabla[,1]==paste("Forma jur","\u00ED","dica:",sep="")))==0,NA,tabla[which(tabla[,1]==paste("Forma jur","\u00ED","dica:",sep="")),2])
 			Nace <- ifelse(length(which(tabla[,1]=="Constituida hace:"))==0,"N.I",tabla[which(tabla[,1]=="Constituida hace:"),2])
 			Objetivo_social <- ifelse(length(which(tabla[,1]=="Objeto social:"))==0,"N.I",str_replace_all(tabla[which(tabla[,1]=="Objeto social:"),2], "([\n\r\t])", ""))
 			C.A.E <- ifelse(length(which(tabla[,1]=="CNAE:"))==0,NA,tabla[which(tabla[,1]=="CNAE:"),2])
@@ -61,7 +61,7 @@ empresa<-function(http){
 			lng<-as.numeric(html_text(geo[grep("longitude",capture.output(geo))-1]))
 			if (sum(lat)==0){lat<-0 ; lng<-0}
 			web_aexor<-http
-			fila<-data.frame("Provinciaa"=Prov,
+			fila<-data.frame("Provincia"=Prov,
 							"Municipalidad"=Mun,
 							"Nombre"=Nombre,
 							"CIF"=CIF,
@@ -71,7 +71,7 @@ empresa<-function(http){
 							"Direccion"=Direccion,
 							"Codigo Postal"=Cod_postal,
 							"C.N.A.E"=CodCAE,
-							"Descripción C.N.A.E"=DescCAE,
+							"Descripcion C.N.A.E"=DescCAE,
 							"S.I.C"=CodSIC,
 							"Descripcion S.I.C"=DescSIC,
 							"Tramo Capital Social"=Tramo_cap_social,

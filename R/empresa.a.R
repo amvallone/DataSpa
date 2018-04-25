@@ -7,7 +7,7 @@ empresa.a<-function(http){
 			pg<-read_html(http)
 			nodes <- html_node(pg,css=".section-content")
 			tabla <- html_table(html_children(nodes))[[1]]
-			Nombre <- ifelse(length(which(tabla[,1]==" Autónomo / Profesional:"))==0,NA,tabla[which(tabla[,1]==" Autónomo / Profesional:"),2])
+			Nombre <- ifelse(length(which(tabla[,1]==paste("Aut","\u00ED","nomo / Profesional:",sep="")))==0,NA,tabla[which(tabla[,1]==paste("Aut","\u00ED","nomo / Profesional:",sep="")),2])
 			if(is.na(Nombre)){Nombre<-str_replace_all(html_text(html_node(pg,css="h3")), "([\n\r\t])", "")}
 			C.A.E <- ifelse(length(which(tabla[,1]=="CNAE:"))==0,NA,tabla[which(tabla[,1]=="CNAE:"),2])
 			if(!is.na(C.A.E)){
@@ -54,7 +54,7 @@ empresa.a<-function(http){
 							"Direccion"=Direccion,
 							"Codigo Postal"=Cod_postal,
 							"C.N.A.E"=CodCAE,
-							"Descripción C.N.A.E"=DescCAE,
+							"Descripcion C.N.A.E"=DescCAE,
 							"S.I.C"=CodSIC,
 							"Descripcion S.I.C"=DescSIC,
 							"Latitud"=lat,
