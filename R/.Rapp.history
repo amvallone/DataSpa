@@ -1,1 +1,17 @@
 library(DataSpa)
+prov<-c("ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS",#
+       "AVILA","BADAJOZ","BALEARES","BARCELONA","BIZKAIA",#
+       "BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLON",#
+       "CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA",#
+       "GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA",#
+       "HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA",#
+       "MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS",#
+       "PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE",#
+       "SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL",#
+       "TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA",#
+       "CEUTA","MELILLA")
+prov[25]
+com <- c("Castilla la Mancha","Comunidad Valenciana","Andalucia","Pais Vasco","Asturias","Castilla y Leon","Extremadura","Baleares","Cataluña","Pais Vasco","Castilla y Leon","Extremadura","Andalucia", "Cantabria","Comunidad Valenciana","Castilla la Mancha","Andalucia","Galicia","Castilla la Mancha","Pais Vasco","Cataluña","Andalucia","Castilla la Mancha","Andalucia","Aragon","Andalucia","Castilla y Leon","Cataluña","Galicia","Madrid","Andalucia","Murcia","Navarra","Galicia","Castilla y Leon","Canarias","Galicia","La Rioja","Castilla y Leon","Canarias","Castilla y Leon","Andalucia","Castilla y Leon","Cataluña","Aragon","Castilla la Mancha","Comunidad Valenciana","Castilla y Leon","Castilla y Leon","Aragon","Ceuta","Melilla" )
+com[25]
+prov[6]
+com[6]

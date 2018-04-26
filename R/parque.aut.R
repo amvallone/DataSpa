@@ -23,15 +23,15 @@
 parque.aut<-function(year,ca,provincia){
 	year<-as.character(year)
 	provincia <- toupper(provincia)
-	ca<-tolower(a.letter(toupper(ca)))
-	if(ca=="cataluna"){ca<-"catalunia"}
-	if(ca=="comunidad_valenciana"){ca<-"valencia"}
-	if(ca=="pais_vasco"){ca<-"paisvasco"}
-	if(ca=="la_rioja"){ca<-"la-rioja"}
+	ca<-tolower(ca)
+	if(ca==paste("catalu","\u00F1","a",sep="")){ca<-"catalunia"}
+	if(ca=="comunidad valenciana"){ca<-"valencia"}
+	if(ca=="pais vasco"){ca<-"paisvasco"}
+	if(ca=="la rioja"){ca<-"la-rioja"}
 	if(ca=="ceuta"){ca<-"ceuta-melilla"}
 	if(ca=="melilla"){ca<-"ceuta-melilla"}
-	if(ca=="castilla_y_leon"){ca<-"castilla-y-leon"}
-	if(ca=="castilla_la_mancha"){ca<-"castilla-la-mancha"}
+	if(ca=="castilla y leon"){ca<-"castilla-y-leon"}
+	if(ca=="castilla la mancha"){ca<-"castilla-la-mancha"}
 	prov<-tolower(a.letter(provincia))
 	if(prov=="araba"){prov<-"alava"}
 	if(prov=="ciudad_real"){prov<-"ciudad-real"}
@@ -54,36 +54,39 @@ parque.aut<-function(year,ca,provincia){
 	dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
 	if (length(dataset)==0) {
 	#descarga los archivos
-	page<-paste("http://www.dgt.es/es/seguridad-vial/estadisticas-e-indicadores/informacion-municipal/provincias/",year,"/",ca,"/",prov,".shtml",sep="")
-	p<-read_html(page)
-	n<-xml_nodes(p,css=".tabg")
-	mun<-html_attr(html_nodes(n,css="a"),"href")
-	nn.mun<-str_trim(html_text(html_nodes(n,css="a")))
-	aux<-sapply(mun,strsplit,"/",USE.NAMES=FALSE)
-	len<-unlist(lapply(aux,length))
-	files<-rep("",length(len))
-	for ( i in seq_along(len)){
-		files[i]<-aux[[i]][len[i]]
-	}
-	cod <- gsub("[^0-9]","",files)
-	pat<-c(", "," ","\u00E9","\u00E1","\u00ED","\u00F3","\u00FA","\u00C1","\u00C9","\u00CD","\u00D3","\u00DA","\u00F1","\u00D1")
-	rempl<-c("_","_","e","a","i","o","u","A","E","I","O","U","n","N")
-	for (i in 1:length(pat)){
-		nn.mun<-sapply(nn.mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
-		mun<-sapply(mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
+		page<-paste("http://www.dgt.es/es/seguridad-vial/estadisticas-e-indicadores/informacion-municipal/provincias/",year,"/",ca,"/",prov,".shtml",sep="")
+		p<-read_html(page)
+		n<-xml_nodes(p,css=".tabg")
+		mun<-html_attr(html_nodes(n,css="a"),"href")
+		nn.mun<-str_trim(html_text(html_nodes(n,css="a")))
+		aux<-sapply(mun,strsplit,"/",USE.NAMES=FALSE)
+		len<-unlist(lapply(aux,length))
+		files<-rep("",length(len))
+		for ( i in seq_along(len)){
+			files[i]<-aux[[i]][len[i]]
 		}
-	files<-paste(year,"_",cod,"_",nn.mun,".pdf",sep="")
-	for (j in 1:length(files)){
-		if(sum(dir(dest)==files[j])==0){
-			tryCatch({
-			download.file(mun[j],paste(dest,"/",files[j],sep=""),mode='wb')
-			}, error=function(e) return(e))
+		cod <- gsub("[^0-9]","",files)
+		pat<-c(", "," ","\u00E9","\u00E1","\u00ED","\u00F3","\u00FA","\u00C1","\u00C9","\u00CD","\u00D3","\u00DA","\u00F1","\u00D1")
+		rempl<-c("_","_","e","a","i","o","u","A","E","I","O","U","n","N")
+		for (i in 1:length(pat)){
+			nn.mun<-sapply(nn.mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
+			mun<-sapply(mun,str_replace_all,pat[i],rempl[i],USE.NAMES=FALSE)
+			}
+		files<-paste(year,"_",cod,"_",nn.mun,".pdf",sep="")
+		for (j in 1:length(files)){
+			if(sum(dir(dest)==files[j])==0){
+				tryCatch({
+				download.file(mun[j],paste(dest,"/",files[j],sep=""),mode='wb')
+				}, error=function(e) return(e))
+			}
 		}
-	}
-	myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
-	lapply(myfiles, function(i) system(paste('pdftotext -eol dos -enc UTF-8 -table', paste0('"', i, '"')), wait = FALSE) )
-	file.remove(myfiles)
-	} 
+		Sys.sleep(2)
+		myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
+		lapply(myfiles, function(i) system(paste('pdftotext -eol dos -enc UTF-8 -table', paste0('"', i, '"')), wait = FALSE) )
+		Sys.sleep(5)
+		file.remove(myfiles)
+		} 
+		
 		dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
 		cod2 <- substr(gsub("[^0-9]","",dataset),9,nchar(dataset))
 		print(length(dataset))
@@ -215,6 +218,8 @@ parque.aut<-function(year,ca,provincia){
 	return(base)
 }
 
+get.files <- function(year,ca,provincia){
 
+}
 
 

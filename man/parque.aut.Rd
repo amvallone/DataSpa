@@ -20,6 +20,6 @@ It is a data frame containing the following variables: the municipality name, nu
 \code{parque.aut} collects information about vehicle fleet in each Spanish municipality
 }
 \examples{
-\dontrun{parque.aut(2014,"Ceuta y Melilla","Ceuta")}
+\dontrun{parque.aut(2014,"Ceuta","Ceuta")}
 
 }
