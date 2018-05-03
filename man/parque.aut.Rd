@@ -19,6 +19,9 @@ It is a data frame containing the following variables: the municipality name, nu
 \description{
 \code{parque.aut} collects information about vehicle fleet in each Spanish municipality
 }
+\details{
+\code{ca} may asume one of these values: "Andalucia", "Asturias", "Aragon", "Baleares", "Canarias","Cantarias", "Castilla y Leon", "Castilla La Mancha", "Cataluña", "Comunidad Valenciana", "Extremadura", "Galicia", "Madrid", "Murcia", "Navarra", "Pais Vasco", "La Rioja", "Ceuta" and  "Melilla".
+}
 \examples{
 \dontrun{parque.aut(2014,"Ceuta","Ceuta")}
 
