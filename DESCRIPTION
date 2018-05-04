@@ -1,26 +1,28 @@
 Package: DataSpa
 Title: Collect Spanish data at municipality level
 Version: 0.9.1
-Authors@R: c( person(given = "Andres", 
-                     family = "Vallone", 
-                     role = c("aut", "cre"), 
-                     email = "avallonev@ucn.cl"), 
-	      person(given = "Coro", 
-	             family = "Chasco", 
-	             role = "ctb", email = "coro.chasco@uam.es"),
-	      person(given = "Beatriz", 
-	             family = "Sanchez", 
-	             role = "ctb", email = "beatriz.sanchez@ucavila.es") )
+Authors@R: as.person(c(
+    "Andres Vallone <avallone@ucn.cl> [aut, cre]", 
+    "Coro Chasco <coro.chasco@uam.es> [aut]",
+    "Beatriz Sanchez <beatriz.sanchez@ucavila.es> [aut]"
+  ))
 Description: Collect data from different sources for Spanish municipalities.
-Depends: R (>= 3.1),
-		stringr,
-		rvest,
-		xlsx
-Imports: XML, stringi, xml2, pbapply
+Depends: 
+	R (>= 3.1),
+	stringr,
+	rvest,
+	xlsx
+Imports:
+	XML,
+	stringi,
+	xml2,
+	pbapply
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Suggests: knitr,
-         rmarkdown
-VignetteBuilder: knitr
+Suggests:
+	knitr,
+	rmarkdown
+VignetteBuilder: 
+	knitr

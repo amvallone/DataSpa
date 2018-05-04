@@ -26,22 +26,6 @@
 parque.aut<-function(year,ca,provincia){
 	year<-as.character(year)
 	provincia <- toupper(provincia)
-	ca<-tolower(ca)
-	if(ca==paste("catalu","\u00F1","a",sep="")){ca<-"catalunia"}
-	if(ca=="comunidad valenciana"){ca<-"valencia"}
-	if(ca=="pais vasco"){ca<-"paisvasco"}
-	if(ca=="la rioja"){ca<-"la-rioja"}
-	if(ca=="ceuta"){ca<-"ceuta-melilla"}
-	if(ca=="melilla"){ca<-"ceuta-melilla"}
-	if(ca=="castilla y leon"){ca<-"castilla-y-leon"}
-	if(ca=="castilla la mancha"){ca<-"castilla-la-mancha"}
-	prov<-tolower(a.letter(provincia))
-	if(prov=="araba"){prov<-"alava"}
-	if(prov=="ciudad_real"){prov<-"ciudad-real"}
-	if(prov=="a_coruna"){prov<-"corunia"}
-	if(prov=="las_palmas"){prov<-"las-palmas"}
-	if(prov=="la_rioja"){prov<-"la-rioja"}
-	if(prov=="tenerife"){prov <- "santa-cruz-de-tenerife"}
 	##Crea los directorios
 	if (dir.exists(file.path(getwd(),"DGT"))==FALSE){
 		dir.create(file.path(getwd(),"DGT"))	
@@ -52,10 +36,33 @@ parque.aut<-function(year,ca,provincia){
 	if (dir.exists(file.path(getwd(),"DGT",provincia,year))==FALSE){
 		dir.create(file.path(getwd(),"DGT",provincia,year))
 		}
-	## carga la lista de txt
 	dest<-file.path(getwd(),"DGT",provincia,year)
+	myfiles <- NULL
+	# ca
+	ca<-tolower(ca)
+	# Casos raros ca
+	if(ca==paste("catalu","\u00F1","a",sep="")){ca<-"catalunia"}
+	if(ca=="comunidad valenciana"){ca<-"valencia"}
+	if(ca=="pais vasco"){ca<-"paisvasco"}
+	if(ca=="la rioja"){ca<-"la-rioja"}
+	if(ca=="ceuta"){ca<-"ceuta-melilla"}
+	if(ca=="melilla"){ca<-"ceuta-melilla"}
+	if(ca=="castilla y leon"){ca<-"castilla-y-leon"}
+	if(ca=="castilla la mancha"){ca<-"castilla-la-mancha"}
+	
+	#provincia
+	prov<-tolower(a.letter(provincia))
+	# casos raros
+	if(prov=="araba"){prov<-"alava"}
+	if(prov=="ciudad_real"){prov<-"ciudad-real"}
+	if(prov=="a_coruna"){prov<-"corunia"}
+	if(prov=="las_palmas"){prov<-"las-palmas"}
+	if(prov=="la_rioja"){prov<-"la-rioja"}
+	if(prov=="tenerife"){prov <- "santa-cruz-de-tenerife"}
+
+	## carga la lista de txt
 	dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
-	if (length(dataset)==0) {
+	if (length(dataset)==0){
 	#descarga los archivos
 		page<-paste("http://www.dgt.es/es/seguridad-vial/estadisticas-e-indicadores/informacion-municipal/provincias/",year,"/",ca,"/",prov,".shtml",sep="")
 		p<-read_html(page)
@@ -87,7 +94,6 @@ parque.aut<-function(year,ca,provincia){
 		myfiles <- list.files(path=dest,pattern = "pdf",  full.names = TRUE)
 		lapply(myfiles, function(i) system(paste('pdftotext -eol dos -enc UTF-8 -table', paste0('"', i, '"')), wait = FALSE) )
 		Sys.sleep(5)
-		file.remove(myfiles)
 		} 
 		
 		dataset<-list.files(path=dest, pattern="txt", full.names=TRUE)
@@ -217,6 +223,7 @@ parque.aut<-function(year,ca,provincia){
 			base<-rbind(base,salida)
 			}	
 		}
+		if(!is.null(myfiles)) {file.remove(myfiles)}
 		base<-as.data.frame(cbind("Cod"=cod2,base))
 	return(base)
 }
