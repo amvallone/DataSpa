@@ -76,11 +76,14 @@ paro<-function(year,mes="julio",provincia){
 				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]
 			}
 		}
-		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){
+		if(stringi::stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){
 			cero<-rep(0,dim(datos)[1])
 			datos[,1]<-paste(cero,datos[,1],sep="")
 		}
 		datos<-datos[-1,]
+		if(is.null(dim(datos))){datos <- t(matrix(datos ))}
+		datos <- datos[,colSums(is.na(datos))!=nrow(datos)]
+		if(is.null(dim(datos))){datos <- t(matrix(datos ))}
 		cod<-datos[,1]
 		n.m<-datos[,2]
 		total<-as.numeric.factor(datos[,3])
@@ -98,7 +101,11 @@ paro<-function(year,mes="julio",provincia){
 		salida[which(is.na(salida[,5])),5]<-0
 		#salida<-rbind(salida,rep(NA,5))
 		nd<-dim(salida)[1]
-		salida <- salida[-nd,]
+		if(nd==1){
+			salida <- salida
+		}else{
+			salida <- salida[-nd,]
+		}
 		#salida[nd,1]<-"Total"
 		#salida[nd,2]<-Cap
 		#salida[nd,3]<-sum(salida[1:nd-1,3])
@@ -141,7 +148,11 @@ paro<-function(year,mes="julio",provincia){
 		salida[which(is.na(salida[,5])),5]<-0
 		#salida<-rbind(salida,rep(NA,5))
 		nd<-dim(salida)[1]
-		salida <- salida[-nd,]
+		if(nd==1){
+			salida <- salida
+		}else{
+			salida <- salida[-nd,]
+		}
 		#salida[nd,1]<-"Total"
 		#salida[nd,2]<-Cap
 		#salida[nd,3]<-sum(salida[1:nd-1,3])
