@@ -1,17 +1,656 @@
+navarra
+l.navarra <- lapply(navarra,lista.empresa)
+library(rvest)
+library(cml)
+library(xml)
+library(xml2)
+l.navarra <- lapply(navarra,lista.empresa)
+library(XML)#
+library(rvest)#
+library(stringr)#
+library(RCurl)
+l.navarra <- lapply(navarra,lista.empresa)
+library(snowfall)#
+sfInit(parallel=TRUE,cpu=3)#
+sfExportAll()#
+sfLibrary(rvest)#
+sfLibrary(XML)#
+sfLibrary(stringr)#
+#l.badajoz<-sfClusterApplyLB(badajoz,lista.empresa)#
+#l.caceres<-sfClusterApplyLB(caceres,lista.empresa)#
+l.bavarra <- sfClusterApplyLB(navarra,lista.empresa)#
+sfStop()
+subset <- unlist(l.navarra)
+subset <- unlist(l.bavarra)
+salida<-(matrix(0,nrow=length(subset),ncol=13))#
+#
+for (i in 1:length(subset)){#
+	tryCatch({#
+		emp<-empresa(subset[i])#
+	}error=function(e){e}#
+	)#
+	if(dim(emp)[1]>1){#
+		salida[i,]<-emp[1]	#
+	} else {#
+		salida[i,]<-emp#
+	}#
+	cat("iter",i,"\n")#
+	Sys.sleep(0.2)#
+}
+for (i in 1:length(subset)){#
+	tryCatch({#
+		emp<-empresa(subset[i])#
+	},error=function(e){e}#
+	)#
+	if(dim(emp)[1]>1){#
+		salida[i,]<-emp[1]	#
+	} else {#
+		salida[i,]<-emp#
+	}#
+	cat("iter",i,"\n")#
+	Sys.sleep(0.2)#
+}
+salida<-(matrix(0,nrow=length(subset),ncol=13))#
+#
+for (i in 1:length(subset)){#
+	tryCatch({#
+		emp<-empresa(subset[i])#
+	},error=function(e){e}#
+	)#
+	if(dim(emp)[1]>1){#
+		salida[i,]<-emp[1]	#
+	} else {#
+		salida[i,]<-emp#
+	}#
+	cat("iter",i,"\n")#
+	Sys.sleep(0.2)#
+}
+empresa)subset[1]
+empresa(subset[1])
+simpleCap <- function(x) {#
+    s <- strsplit(x, " ")[[1]]#
+    paste(substring(s, 1, 1), tolower(substring(s, 2)),#
+          sep = "", collapse = " ")#
+}
+empresa(subset[1])
+empresa.a(subset[1])
+empresa.a<-function(http){#
+			pg<-read_html(http)#
+			nodes <- html_node(pg,css=".section-content")#
+			tabla <- html_table(html_children(nodes))[[1]]#
+			Nombre <- ifelse(length(which(tabla[,1]==paste("Aut","\u00ED","nomo / Profesional:",sep="")))==0,NA,tabla[which(tabla[,1]==paste("Aut","\u00ED","nomo / Profesional:",sep="")),2])#
+			if(is.na(Nombre)){Nombre<-str_replace_all(html_text(html_node(pg,css="h3")), "([\n\r\t])", "")}#
+			C.A.E <- ifelse(length(which(tabla[,1]=="CNAE:"))==0,NA,tabla[which(tabla[,1]=="CNAE:"),2])#
+			if(!is.na(C.A.E)){#
+				CodCAE<-na.omit(unlist(strsplit(C.A.E,"[^[:digit:]]")))[1]#
+				DescCAE<-sub("[[:digit:]]+","",str_replace_all(C.A.E, "([\n\r\t])", ""))#
+				if(length(DescCAE)==0){ DescCAE<-NA}#
+			} else {#
+				CodCAE<-NA#
+				DescCAE<-NA#
+			}#
+			S.I.C <- ifelse(length(which(tabla[,1]=="SIC:"))==0,NA,tabla[which(tabla[,1]=="SIC:"),2])#
+			if(!is.na(S.I.C)){#
+				CodSIC<-na.omit(unlist(strsplit(S.I.C,"[^[:digit:]]")))[1]#
+				DescSIC<-sub("[[:digit:]]+","",str_replace_all(S.I.C, "([\n\r\t])", ""))#
+				if(length(DescSIC)==0){ DescSIC<-NA}#
+			} else {#
+				CodSIC<-NA#
+				DescSIC<-NA#
+			}#
+			Dir <- ifelse(length(which(tabla[,1]==paste("Direcci","\u00F3","n:",sep="")))==0,NA,tabla[which(tabla[,1]==paste("Direcci","\u00F3","n:",sep="")),2])#
+			if(!is.na(Dir)){#
+				Dd <- html_children(html_node(nodes,"span"))#
+				if(length(Dd)==0){Dd <- html_nodes(nodes,"span")}#
+				Direccion <- str_trim(str_replace_all(html_text(Dd[1]), "([\n\r\t,])", ""))#
+				Cod_postal <- str_trim(str_replace_all(html_text(Dd)[2], "([\n\r\t,])", ""))#
+				Mun <- simpleCap(str_trim(str_replace_all(html_text(Dd)[3], "([\n\r\t,])", "")))#
+				Prov <- simpleCap(str_trim(str_replace_all(html_text(Dd)[4], "([\n\r\t,])", "")))#
+			} else {#
+				Direccion <- NA#
+				Cod_postal <- NA#
+				Mun <- NA#
+				Prov <- NA#
+			}		#
+			p2<-html_node(pg,css="#resumen_general")#
+			data<-html_text(html_nodes(p2,css="p")[2])#
+			geo<-html_nodes(html_nodes(p2,css="div"),css="span")#
+			lat<-as.numeric(html_text(geo[grep("latitude",capture.output(geo))-1]))#
+			lng<-as.numeric(html_text(geo[grep("longitude",capture.output(geo))-1]))#
+			if (sum(lat)==0){lat<-0 ; lng<-0}#
+			web_aexor<-http#
+						fila<-data.frame("Provinciaa"=Prov,#
+							"Municipalidad"=Mun,#
+							"Nombre"=Nombre,#
+							"Direccion"=Direccion,#
+							"Codigo Postal"=Cod_postal,#
+							"C.N.A.E"=CodCAE,#
+							"Descripcion C.N.A.E"=DescCAE,#
+							"S.I.C"=CodSIC,#
+							"Descripcion S.I.C"=DescSIC,#
+							"Latitud"=lat,#
+							"Longitud"=lng,#
+							"URL en Axesor"=web_aexor,stringsAsFactors = FALSE)#
+			return(fila)#
+}
+empresa.a(subset[1])
+ls()
+sfInit(parallel=TRUE,cpu=3)#
+sfExportAll()#
+sfLibrary(rvest)#
+sfLibrary(XML)#
+sfLibrary(stringr)#
+aut.navarra<- sfClusterApplyLB(subset,empresa.a)#
+sfStop()
+clas(aut.navarra)
+class(aut.navarra)
+aut.navraa[1]
+aut.navrra[1]
+aut.navarra[1]
+autnomos <- do.call(rbind.data.frame,aut.navarra)
+dim(autonomos)
+dim(autnomos)
+head(autnomos)
+openxlsx::wirte.xlsx(autnomos,"autnomos-navarra.xlsx")
+openxlsx::write.xlsx(autnomos,"autnomos-navarra.xlsx")
+autonomos <- autnomos
+save(autonomos,file="aut-navarra.rdata")
+ls()
+navarra
+library(SataSpa)
 library(DataSpa)
-prov<-c("ALBACETE","ALICANTE","ALMERIA","ARABA","ASTURIAS",#
-       "AVILA","BADAJOZ","BALEARES","BARCELONA","BIZKAIA",#
-       "BURGOS","CACERES","CADIZ","CANTABRIA","CASTELLON",#
-       "CIUDAD REAL","CORDOBA","A CORUÑA","CUENCA",#
-       "GIPUZKOA","GIRONA","GRANADA","GUADALAJARA","HUELVA",#
-       "HUESCA","JAEN","LEON","LLEIDA","LUGO","MADRID","MALAGA",#
-       "MURCIA","NAVARRA","OURENSE","PALENCIA","LAS PALMAS",#
-       "PONTEVEDRA", "LA RIOJA","SALAMANCA","TENERIFE",#
-       "SEGOVIA","SEVILLA","SORIA","TARRAGONA","TERUEL",#
-       "TOLEDO","VALENCIA","VALLADOLID","ZAMORA","ZARAGOZA",#
-       "CEUTA","MELILLA")
-prov[25]
-com <- c("Castilla la Mancha","Comunidad Valenciana","Andalucia","Pais Vasco","Asturias","Castilla y Leon","Extremadura","Baleares","Cataluña","Pais Vasco","Castilla y Leon","Extremadura","Andalucia", "Cantabria","Comunidad Valenciana","Castilla la Mancha","Andalucia","Galicia","Castilla la Mancha","Pais Vasco","Cataluña","Andalucia","Castilla la Mancha","Andalucia","Aragon","Andalucia","Castilla y Leon","Cataluña","Galicia","Madrid","Andalucia","Murcia","Navarra","Galicia","Castilla y Leon","Canarias","Galicia","La Rioja","Castilla y Leon","Canarias","Castilla y Leon","Andalucia","Castilla y Leon","Cataluña","Aragon","Castilla la Mancha","Comunidad Valenciana","Castilla y Leon","Castilla y Leon","Aragon","Ceuta","Melilla" )
-com[25]
-prov[6]
-com[6]
+pob.ind(206,"Melilla")
+pob.ind(2006,"Melilla")
+paro(2006,"Melilla")
+paro(2006,"junio","Melilla")
+dirc<-paste(getwd(),"/data_paro/",sep="")
+dirc
+dir(dirc)
+abre<-paste(dirc,file1,sep="")
+abre<-paste(dirc,"paro_MUNI_MELILLA_0716.xls",sep="")
+abre
+abre<-paste(dirc,file1,sep="")
+datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))
+datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
+datos
+datos<-apply(datos,2,as.character)
+datos
+datos<-datos[-dim(datos)[1],]
+datos
+p<-which(datos[,1]=="MUNICIPIOS")+1
+p
+abre<-paste(dirc,"paro_MUNI_MELILLA_0706.xls",sep="")
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))
+datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
+datos<-apply(datos,2,as.character)
+p<-which(datos[,1]=="MUNICIPIOS")+1
+p
+datos
+datos<-datos[-dim(datos)[1],]
+p<-which(datos[,1]=="MUNICIPIOS")+1#
+		f<-dim(datos)[1]
+datos
+datos<-datos[p:f,]#
+		datos<-cbind(datos[,1],datos)
+datos
+datos<-datos[-1,]
+cod<-datos[,1]#
+		n.m<-datos[,2]
+datos
+datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
+datos
+abre
+open<-paste(dirc,file,sep="")
+dirc
+dir(dirc)
+open<-paste(dirc,"paro_MUNI_MELILLA_0716.xls",sep="")
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))#
+		datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")#
+		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")#
+		datos<-apply(datos,2,as.character)#
+		idn<-apply(idn,2,as.character)#
+		datos<-datos[-dim(datos)[1],]#
+		idn<-idn[-dim(idn)[1],]#
+		p<-which(datos[,1]=="MUNICIPIOS")+1#
+		f<-dim(datos)[1]#
+		pi<-max(which(is.na(idn[,1])))+1#
+		fi<-dim(idn)[1]#
+		datos<-datos[p:f,]#
+		datos<-cbind(datos[,1],datos)#
+		v<-intersect(datos[,1],idn[,2])#
+		for( k in 1:length(v)){#
+			if(length(which(idn[,2]==v[k]))>1){#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k])[2],1]#
+			}else{#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]#
+			}#
+		}#
+		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){#
+			cero<-rep(0,dim(datos)[1])#
+			datos[,1]<-paste(cero,datos[,1],sep="")#
+		}#
+		datos<-datos[-1,]#
+		cod<-datos[,1]#
+		n.m<-datos[,2]
+library(stringi)
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))#
+		datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")#
+		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")#
+		datos<-apply(datos,2,as.character)#
+		idn<-apply(idn,2,as.character)#
+		datos<-datos[-dim(datos)[1],]#
+		idn<-idn[-dim(idn)[1],]#
+		p<-which(datos[,1]=="MUNICIPIOS")+1#
+		f<-dim(datos)[1]#
+		pi<-max(which(is.na(idn[,1])))+1#
+		fi<-dim(idn)[1]#
+		datos<-datos[p:f,]#
+		datos<-cbind(datos[,1],datos)#
+		v<-intersect(datos[,1],idn[,2])#
+		for( k in 1:length(v)){#
+			if(length(which(idn[,2]==v[k]))>1){#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k])[2],1]#
+			}else{#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]#
+			}#
+		}#
+		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){#
+			cero<-rep(0,dim(datos)[1])#
+			datos[,1]<-paste(cero,datos[,1],sep="")#
+		}#
+		datos<-datos[-1,]#
+		cod<-datos[,1]#
+		n.m<-datos[,2]
+datos
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))#
+		datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")#
+		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")#
+		datos<-apply(datos,2,as.character)#
+		idn<-apply(idn,2,as.character)#
+		datos<-datos[-dim(datos)[1],]#
+		idn<-idn[-dim(idn)[1],]#
+		p<-which(datos[,1]=="MUNICIPIOS")+1#
+		f<-dim(datos)[1]#
+		pi<-max(which(is.na(idn[,1])))+1#
+		fi<-dim(idn)[1]#
+		datos<-datos[p:f,]#
+		datos<-cbind(datos[,1],datos)#
+		v<-intersect(datos[,1],idn[,2])#
+		for( k in 1:length(v)){#
+			if(length(which(idn[,2]==v[k]))>1){#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k])[2],1]#
+			}else{#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]#
+			}#
+		}#
+		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){#
+			cero<-rep(0,dim(datos)[1])#
+			datos[,1]<-paste(cero,datos[,1],sep="")#
+		}
+datos
+datos<-datos[-1,
+]
+dim(datos)
+if(is.null(dim(datos))){datos <- as.matrix(datos)}
+dim(datos)
+if(is.null(dim(datos))){datos <- t(as.matrix(datos))}
+datos
+if(is.null(dim(datos))){datos <- matrix(datos,nrow=1)}
+datos
+wb <- loadWorkbook(abre)#
+		sh <- getSheets(wb)#
+		hoja <- agrep("PARO",names(sh))#
+		datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")#
+		idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")#
+		datos<-apply(datos,2,as.character)#
+		idn<-apply(idn,2,as.character)#
+		datos<-datos[-dim(datos)[1],]#
+		idn<-idn[-dim(idn)[1],]#
+		p<-which(datos[,1]=="MUNICIPIOS")+1#
+		f<-dim(datos)[1]#
+		pi<-max(which(is.na(idn[,1])))+1#
+		fi<-dim(idn)[1]#
+		datos<-datos[p:f,]#
+		datos<-cbind(datos[,1],datos)#
+		v<-intersect(datos[,1],idn[,2])#
+		for( k in 1:length(v)){#
+			if(length(which(idn[,2]==v[k]))>1){#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k])[2],1]#
+			}else{#
+				datos[which(datos[,2]==v[k]),1]<-idn[which(idn[,2]==v[k]),1]#
+			}#
+		}#
+		if(stri_count(datos[min(which(!is.na(datos[,1]))),1],regex="[[:number:]]")==4){#
+			cero<-rep(0,dim(datos)[1])#
+			datos[,1]<-paste(cero,datos[,1],sep="")#
+		}#
+		datos<-datos[-1,]
+class(datos)
+length(datos)
+matrix(datos)
+t(matrix(datos))
+if(is.null(dim(datos))){datos <- t(matrix(datos ))}
+datos
+cod<-datos[,1]
+cod
+library(rvest)
+read:html("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+read_html("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+read_table("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+html_table("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+html_table(read_hatml("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv"))
+html_table(read_html("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv"))
+html_table(read_html("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv"))->s
+s
+open("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+read.table("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+library(readxl)
+read_csv("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+install.packages("readr")
+library(readr)
+read_csv("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+load("/Users/andresvallone/Dropbox/FIC CBC 2 2018/Calculo de indices/Data2/imp.RData")
+get.Comtrade <- function(#
+                          maxrec=50000#
+                         ,type="C"#
+                         ,freq="A"#
+                         ,px="HS"#
+                         ,ps="now"#
+                         ,r#
+                         ,p#
+                         ,rg="all"#
+                         ,cc="TOTAL"#
+                         ,fmt="csv"#
+)#
+{#
+  string<- paste(url="http://comtrade.un.org/api/get?"#
+                 ,"max=",maxrec,"&" #maximum no. of records returned#
+                 ,"type=",type,"&" #type of trade (c=commodities)#
+                 ,"freq=",freq,"&" #frequency#
+                 ,"px=",px,"&" #classification#
+                 ,"ps=",ps,"&" #time period#
+                 ,"r=",r,"&" #reporting area#
+                 ,"p=",p,"&" #partner country#
+                 ,"rg=",rg,"&" #trade flow#
+                 ,"cc=",cc,"&" #classification code#
+                 ,"fmt=",fmt        #Format#
+                 ,sep = ""#
+  )#
+  if(fmt == "csv") {#
+   # raw.data<- read.csv(string,header=TRUE)#
+    #return(list(validation=NULL, data=raw.data))#
+    #return(raw.data)#
+    return(string)#
+  } else {#
+    if(fmt == "json" ) {#
+      raw.data<- fromJSON(file=string)#
+      data<- raw.data$dataset#
+      validation<- unlist(raw.data$validation, recursive=TRUE)#
+      ndata<- NULL#
+      if(length(data)> 0) {#
+        var.names<- names(data[[1]])#
+        data<- as.data.frame(t( sapply(data,rbind)))#
+        ndata<- NULL#
+        for(i in 1:ncol(data)){#
+          data[sapply(data[,i],is.null),i]<- NA#
+          ndata<- cbind(ndata, unlist(data[,i]))#
+        }#
+        ndata<- as.data.frame(ndata)#
+        colnames(ndata)<- var.names#
+      }#
+      #return(list(validation=validation,data =ndata))#
+      return(ndata)#
+    }#
+  }#
+}
+ask(year[1],c.pai[1],prod[1])
+ll <- lapply(seq_len(200),function(x) (ask(y=year[x],pa=c.pai[x],c=prod[x])))
+ll <- unlist(ll)
+ll[1:10]
+read_csv2("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+read_csv("http://comtrade.un.org/api/get?max=50000&type=C&freq=A&px=HS&ps=2006&r=4&p=0&rg=1&cc=0202&fmt=csv")
+library(snowfall)#
+sfInit(parallel=TRUE,cpu=3)#
+sfExportAll()#
+sfLibrary(readr)#
+#
+l_data<-sfClusterApplyLB(ll,read_csv)#
+#
+sfStop()
+length(l_data)
+read_csv(ll[1])
+read_csv(ll[2])
+read_csv(ll[20])
+read_csv(ll[21])
+read_csv(ll[23])
+read_csv(ll[195])
+l_data <- list(seq_along(prod))
+length(l_data)
+l:data
+l_data
+l_data <- list()#
+for (i in seq_alon(prod)){#
+	l:data[[i]] <- read_csv(ll[i])#
+	Sys.sleep(3)#
+}
+l_data <- list()#
+for (i in seq_along(prod)){#
+	l:data[[i]] <- read_csv(ll[i])#
+	Sys.sleep(3)#
+}
+l_data <- list()#
+for (i in seq_along(prod)){#
+	l_data[[i]] <- read_csv(ll[i])#
+	Sys.sleep(3)#
+}
+length(l_data)
+for (i in 88:length(prod)){#
+	l_data[[i]] <- read_csv(ll[i])#
+	Sys.sleep(3)#
+}
+l_dara <- lapply(ll,read.csv)
+read.csv(ll[1])
+read.csv(ll[195])
+195+195
+length(prod)
+length(prod)/195
+length(prod)/195/10
+ll <- lapply(seq_along(prod),function(x) (ask(y=year[x],pa=c.pai[x],c=prod[x])))
+cortes <- split(ll, ceiling(seq_along(prod)/195))
+cortes[1]
+class(corte[[1]])
+class(cortes[[1]])
+c <- llaply(cortes,unlist)
+c <- lapply(cortes,unlist)
+c[[1]]
+cortes <- lapply(split(ll, ceiling(seq_along(prod)/195)),unlist)
+cortes[1]
+lapply(cortes[[1]],read.csv)->p
+p
+length/cortes
+length(cortes)
+119/24
+datos <- lapply(cortes[[1]],read.csv) # remplaza "#" por un numero, la PC 1 el 1, la PC 2 el " y asi...
+ll[1]
+load("/Users/andresvallone/Dropbox/FIC CBC 2 2018/Calculo de indices/Data2/imp.RData")
+data <- list()#
+k <- 0#
+b <- 1#
+bar <- txtProgressBar(min = 0, max =length(prod), style = 3)#
+#
+for(j in b:length(prod)){#
+	data[[j]] <- read.csv(ll[[j]])#
+	Sys.sleep(1)#
+	setTxtProgressBar(bar,j)#
+	k <- k+1#
+	if(k==100){#
+		Sys.sleep(3600)#
+		k <- 0#
+	}#
+}
+get.Comtrade <- function(#
+                          maxrec=50000#
+                         ,type="C"#
+                         ,freq="A"#
+                         ,px="HS"#
+                         ,ps="now"#
+                         ,r#
+                         ,p#
+                         ,rg="all"#
+                         ,cc="TOTAL"#
+                         ,fmt="csv"#
+)#
+{#
+  string<- paste(url="http://comtrade.un.org/api/get?"#
+                 ,"max=",maxrec,"&" #maximum no. of records returned#
+                 ,"type=",type,"&" #type of trade (c=commodities)#
+                 ,"freq=",freq,"&" #frequency#
+                 ,"px=",px,"&" #classification#
+                 ,"ps=",ps,"&" #time period#
+                 ,"r=",r,"&" #reporting area#
+                 ,"p=",p,"&" #partner country#
+                 ,"rg=",rg,"&" #trade flow#
+                 ,"cc=",cc,"&" #classification code#
+                 ,"fmt=",fmt        #Format#
+                 ,sep = ""#
+  )#
+  if(fmt == "csv") {#
+    #raw.data<- read.csv(string,header=TRUE)#
+    #return(list(validation=NULL, data=raw.data))#
+    return(string)#
+  } else {#
+    if(fmt == "json" ) {#
+      raw.data<- fromJSON(file=string)#
+      data<- raw.data$dataset#
+      validation<- unlist(raw.data$validation, recursive=TRUE)#
+      ndata<- NULL#
+      if(length(data)> 0) {#
+        var.names<- names(data[[1]])#
+        data<- as.data.frame(t( sapply(data,rbind)))#
+        ndata<- NULL#
+        for(i in 1:ncol(data)){#
+          data[sapply(data[,i],is.null),i]<- NA#
+          ndata<- cbind(ndata, unlist(data[,i]))#
+        }#
+        ndata<- as.data.frame(ndata)#
+        colnames(ndata)<- var.names#
+      }#
+      #return(list(validation=validation,data =ndata))#
+      return(string)#
+    }#
+  }#
+}#
+#
+#datos <- openxlsx::read.xlsx("falllas.xlsx")#
+#pai <- openxlsx::read.xlsx("ccountry.xlsx")#
+#
+#pai.c <- unique(datos[,1])
+ask<-function(y,pa,c,...){#
+	tryCatch(#
+		get.Comtrade(ps=y,r=pa,rg=1,cc=c,p=0,...),#
+		error=function(e){e}#
+	)#
+}#
+#
+ll <- lapply(seq_along(prod),function(x) (ask(y=year[x],pa=c.pai[x],c=prod[x])))
+data <- list()#
+k <- 0#
+b <- 1#
+bar <- txtProgressBar(min = 0, max =length(prod), style = 3)#
+#
+for(j in b:length(prod)){#
+	data[[j]] <- read.csv(ll[[j]])#
+	Sys.sleep(1)#
+	setTxtProgressBar(bar,j)#
+	k <- k+1#
+	if(k==100){#
+		Sys.sleep(3600)#
+		k <- 0#
+	}#
+}
+length(data)
+install.packages("meme")
+library(meme)
+plot(create_meme("http://www.news.ucsb.edu/sites/www.news.ucsb.edu/files/styles/article_horizontal/public/images/2014/angry%20face.jpg?itok=xdzforot","En serio...","que hoy no podemos??"))
+u <- "http://img4.wikia.nocookie.net/__cb20131009153844/villains/images/f/f6/Grumpy_Cat.jpg"#
+plot(grumpy <- create_meme(u, "", "R-help"))
+library(meme)
+u <- "http://img4.wikia.nocookie.net/__cb20131009153844/villains/images/f/f6/Grumpy_Cat.jpg"#
+plot(grumpy <- create_meme(u, "", "R-help"))
+devtools::install_github("leeper/meme")
+library(meme)
+u <- "http://img4.wikia.nocookie.net/__cb20131009153844/villains/images/f/f6/Grumpy_Cat.jpg"#
+plot(grumpy <- create_meme(u, "", "R-help"))
+plot(create_meme("http://www.news.ucsb.edu/sites/www.news.ucsb.edu/files/styles/article_horizontal/public/images/2014/angry%20face.jpg?itok=xdzforot","En serio...","que hoy no podemos??"))
+templates <- get_templates("memecaptain")
+u
+browse(u)
+u <- "http://www.news.ucsb.edu/sites/www.news.ucsb.edu/files/styles/article_horizontal/public/images/2014/angry%20face.jpg?itok=xdzforot"
+plot(grumpy <- create_meme(u, "", "R-help"))
+getwd()
+u <- "http://www.letuswrite.net/wp-content/uploads/2014/11/5490596-crazy-man.jpg"
+plot(grumpy <- create_meme(u, "", "R-help"))
+library(DataSpa)
+pob.tot(2017,"Avila")
+pob.tot(2017,"Avila")->pp
+pp
+dim(pp)
+sum(pp[,3])
+pob.tot(2017,"Madrid")->pp
+pp
+getwd()
+dir()
+fies <- dir()
+files
+file
+files
+fies
+library(stringr)
+names <- str_remove_all(fies,".R")
+names
+p1 <- "\lstinputlisting[language=R,caption={["
+p1 <- " \lstinputlisting[language=R,caption={[ "
+p1 <- "lstinputlisting[language=R,caption={["
+p2 <- "function code}]{"
+lAp <- paste("\",p1,names,"]",names,p2,"}"," ","\","newpage",sep="" )
+as.character(\)
+.character(\
+character(|)
+character(\)
+character("\")
+p1 <- "\\lstinputlisting[language=R,caption={["
+p1
+p1 <- "lstinputlisting[language=R,caption={["
+lAp <- paste("\\",p1,names,"]",names,p2,"}"," ","\\","newpage",sep="" )
+lAp
+lAp <- paste("\\",p1,names,"]",names,p2,"}","\\","newpage",sep="" )
+lAp
+lAp <- paste("\\",p1,names,"]",names,p2,"\}","\\","newpage",sep="" )
+lAp <- paste("\\",p1,names,"]",names,p2,"}","\\","newpage",sep="" )
+lAp
+lAp <- paste("\\",p1,names,"]",names,p2,"}",fies,,"\\","newpage",sep="" )
+lAp <- paste("\\",p1,names,"]",names,p2,"}",fies,"\\","newpage",sep="")
+lAp
+lAp <- paste("\\",p1,names,"]"," ",names," "p2,"}",fies,"\\","newpage",sep="")
+lAp <- paste("\\",p1,names,"]"," ",names," ",p2,"}",fies,"\\","newpage",sep="")
+lAp[1]
+lAp <- paste("\\",p1,names,"]"," ",names," ",p2,"}{",fies,"}","\\","newpage",sep="")
+lAp[1]
+lAp
+lAp <- paste("\\",p1,names,"]"," ",names," ",p2,"}{Code/",fies,"}","\\","newpage",sep="")
+lAp
+lAp <- paste("\\",p1,names,"]"," ",names," ",p2,"}{Code/",fies,"}",sep="")
+lAp
+library(DataSpa)
+data.firm("Madrid")

@@ -8,7 +8,7 @@ lista.empresa.a<-function(http){
 	txt<-capture.output(doc)
 	v<-grep("paginacion-botones",txt)
 		if (sum(v)==0){
-			salida<-get.empresas(http)
+			salida<-get.empresas.a(http)
 		} else {
 			n.p<-html_attr(html_children(html_node(h,css=".paginacion-numeracion")),"href")
 			pag<-as.numeric(str_extract(n.p[length(n.p)],"[[:digit:]]+"))

@@ -35,7 +35,7 @@ data.firm.a<-function(provincia){
 	}
 	set<-mun[resp]
 	set
-	lista<-lista.empresa.a(set)
+	lista<-lista<-unlist(sapply(set,lista.empresa.a,USE.NAMES=FALSE))
 	cat("se analizan",length(lista),"casos \n")
 	pp<-pbapply::pblapply(lista,empresa.a)
 	salida <- do.call(rbind.data.frame,pp)
