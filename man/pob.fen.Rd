@@ -33,3 +33,4 @@ Other Loading functions: \code{\link{paro}},
   \code{\link{pob.n.tot}}, \code{\link{pob.q}},
   \code{\link{pob.tot}}
 }
+\concept{Loading functions}

@@ -36,3 +36,4 @@ Other Loading functions: \code{\link{pob.a}},
   \code{\link{pob.n.tot}}, \code{\link{pob.q}},
   \code{\link{pob.tot}}
 }
+\concept{Loading functions}

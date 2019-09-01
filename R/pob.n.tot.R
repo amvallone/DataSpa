@@ -27,7 +27,8 @@ pob.n.tot<-function(year,provincia){
 			getbase.pob(year,provincia,extr=TRUE)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,2,6,7), encoding ="UTF-8")
+		#datos<-xlsx::read.xlsx(abre,1,colIndex=c(1,2,6,7), encoding ="UTF-8")
+		datos<-as.data.frame(readxl::read_excel(abre,range = readxl::cell_cols(c("A","B","F","G"))))
 		d<-dim(datos)
 		nombres<-as.character(datos[,1])
 		codigo<-rep("AA",d[1])

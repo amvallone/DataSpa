@@ -30,3 +30,4 @@ getbase.fen(2005,"Madrid")
 Other download functions: \code{\link{getbase.paro}},
   \code{\link{getbase.pob}}
 }
+\concept{download functions}

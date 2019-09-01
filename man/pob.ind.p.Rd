@@ -54,3 +54,4 @@ Other Manipulate functions: \code{\link{pob.e.ev}},
   \code{\link{pob.h.ev}}, \code{\link{pob.ind}},
   \code{\link{pob.m.ev}}, \code{\link{pob.n.ev}}
 }
+\concept{Manipulate functions}

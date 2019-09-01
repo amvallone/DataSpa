@@ -41,3 +41,5 @@ Other Manipulate functions: \code{\link{pob.e.ev}},
   \code{\link{pob.h.ev}}, \code{\link{pob.ind.p}},
   \code{\link{pob.ind}}, \code{\link{pob.m.ev}}
 }
+\concept{Loading functions}
+\concept{Manipulate functions}

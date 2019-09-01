@@ -26,3 +26,4 @@ It is an interactive function, which requires the selection of a particular muni
 Other firm functions: \code{\link{data.firm}},
   \code{\link{num.firm.a}}, \code{\link{num.firm}}
 }
+\concept{firm functions}

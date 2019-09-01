@@ -1,9 +1,13 @@
 #' @importFrom utils download.file capture.output read.table
 #' @import stringr 
-#' @import xlsx
+#' @importFrom stringr str_trim
+#' @import gdata
+#' @import readxl
+#' @import openxlsx
 #' @import rvest
 #' @importFrom xml2 read_html
 #' @importFrom stats na.omit
+#' @importFrom stats complete.cases
 #' @importFrom XML htmlParse
 #' @importFrom stringi stri_count
 #'

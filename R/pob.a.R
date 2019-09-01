@@ -35,7 +35,8 @@ pob.a<-function(year,provincia){
 			getbase.pob(year,provincia,anual=TRUE)
 		}
 		abre<-paste(dirc,file,sep="")
-		datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
+		#datos<-xlsx::read.xlsx(abre,1, encoding ="UTF-8")
+		datos<-as.data.frame(readxl::read_excel(abre))
 		d<-dim(datos)
 		t<-which(datos[,1]=="Ambos sexos")
 		h<-which(datos[,1]=="Hombres")

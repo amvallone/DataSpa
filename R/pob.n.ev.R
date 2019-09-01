@@ -44,7 +44,7 @@ pob.n.ev<-function(inicio,fin,provincia,print=FALSE){
 			dir.create(file.path(getwd(),"Outputs"))
 			}
 		file<-paste(getwd(),"/Outputs/pob_national_ev_",provincia,"_",paste(inicio,fin,sep="-"),".xlsx",sep="")
-		xlsx::write.xlsx(base,file)		
+		openxlsx::write.xlsx(base,file)		
 		}
 	base
 }

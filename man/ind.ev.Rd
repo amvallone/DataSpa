@@ -48,3 +48,4 @@ Junta de Extremadura (2017) Atlas Socieconómico de Extremadura 2017. Mérida (S
 \url{http://estadistica.gobex.es/web/guest/atlas-socieconomico-de-extremadura}
 }
 }
+\concept{manipulation functions}

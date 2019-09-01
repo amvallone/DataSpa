@@ -82,7 +82,7 @@ pob.ind.p<-function(year,provincia,print=FALSE){
 			dir.create(file.path(getwd(),"Outputs"))
 			}
 	file<-paste(getwd(),"/Outputs/pob_index-p_",provincia,"_",year,".xlsx",sep="")
-	write.xlsx(salida,file)
+	openxlsx::write.xlsx(salida,file)
 		}
 	salida
 }

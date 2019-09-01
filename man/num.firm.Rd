@@ -23,3 +23,4 @@ It is a data frame
 Other firm functions: \code{\link{data.firm.a}},
   \code{\link{data.firm}}, \code{\link{num.firm.a}}
 }
+\concept{firm functions}

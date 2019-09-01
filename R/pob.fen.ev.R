@@ -49,10 +49,10 @@ pob.fen.ev<-function(inicio,fin,provincia,print=FALSE){
 			dir.create(file.path(getwd(),"Outputs"))
 			}		
 		excel<-createWorkbook()
-		s1<-createSheet(excel,sheetName="Nacimientos")
-		s2<-createSheet(excel,sheetName="Fallacimientos")
-		addDataFrame(base.n,s1)
-		addDataFrame(base.f,s2)
+		s1<-addWorksheet(excel,sheetName="Nacimientos")
+		s2<-addWorksheet(excel,sheetName="Fallacimientos")
+		writeDataTable(excel,s1,base.n)
+		writeDataTable(excel,s2,base.f)
 		file<-paste(getwd(),"/Outputs/fen_evol_total_",provincia,"_",paste(inicio,fin,sep="-"),".xlsx",sep="")
 		saveWorkbook(excel,file)
 	}
