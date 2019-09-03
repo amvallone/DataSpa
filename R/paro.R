@@ -56,10 +56,10 @@ paro<-function(year,mes="julio",provincia){
 		sh <- gdata::sheetNames(abre)
 		hoja <- agrep("PARO",sh)
 		#datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
-		datos <- gdata::read.xls(abre,sheet=hoja,skip=1)
+		datos <- gdata::read.xls(abre,sheet=hoja,skip=1,check.names=F)
 		if(colnames(datos)[1]=="X") {datos[,1]<-NULL}
 		#idn<-xlsx::read.xlsx(open,1,colIndex=c(1:3), encoding ="UTF-8")
-		idn <- gdata::read.xls(open,sheet=1,skip=1)
+		idn <- gdata::read.xls(open,sheet=1,skip=1,check.names=F)
 		datos<-apply(datos,2,as.character)
 		idn<-apply(idn,2,as.character)
 		datos<-datos[-dim(datos)[1],]
@@ -126,7 +126,7 @@ paro<-function(year,mes="julio",provincia){
 		sh <- gdata::sheetNames(abre)
 		hoja <- agrep("PARO",sh)
 		#datos<-xlsx::read.xlsx(abre,hoja, encoding ="UTF-8")
-		datos<-as.data.frame(gdata::read.xls(abre,sheet=hoja,skip=1))
+		datos<-as.data.frame(gdata::read.xls(abre,sheet=hoja,skip=1,check.names=F))
 		datos<-apply(datos,2,as.character)
 		datos<-datos[-dim(datos)[1],]
 		p<-max(which(is.na(datos[,1])))+1

@@ -3,7 +3,7 @@ title: "Total population of Spanish municipalities"
 author: "Andres Vallone, Coro Chasco and Beatriz Sanchez"
 date: "`r Sys.Date()`"
 output:
-  word_document: default
+
   html_document: default
 ---
 
@@ -116,7 +116,7 @@ Spatial representation of this variable on a map shows a multicentric structure 
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 require(ggplot2)
-muni17 <- xlx::read.xlsx2("Muni17.xlsx", 1)
+muni17 <- openxlsx::read.xlsx("Muni17.xlsx", 1)
 muni17$CODE <- as.character(muni17$CODE) # Convert formats
 muni17$XLON<-as.numeric(as.character(muni17$XLON))
 muni17$YLAT<-as.numeric(as.character(muni17$YLAT))
