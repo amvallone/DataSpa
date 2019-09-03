@@ -1,3 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 doc/.*[.]png$
+^doc$
+^Meta$

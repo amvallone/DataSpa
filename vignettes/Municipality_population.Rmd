@@ -2,9 +2,11 @@
 title: "Total population of Spanish municipalities"
 author: "Andres Vallone, Coro Chasco and Beatriz Sanchez"
 date: "`r Sys.Date()`"
-output:
-
-  html_document: default
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Total population of Spanish municipalities}
+  %\VignetteEngine{knitr::knitr}
+   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
