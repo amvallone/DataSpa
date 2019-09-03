@@ -59,11 +59,11 @@ for(i in seq_along(prov)){
 This function enables loading to R of the 52 Excel files previously downloaded from SEPE and stored in the ‘data_paro’ folder. If necessary, it can also call the `getbase.paro()` function to download the Excel files. Additionally, it creates a unique data frame with the unemployment database. For example, for the unemployment database (June 30<sup>th</sup>, 2017).
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-parot17 <- list()
+parot17 <- data.frame()
 for (i in seq_along(prov)){
-  print(prov[i])
+  print(i)
   data <- paro(2017,"junio",prov[i])
-  parot17 <- data
+  parot17 <- rbind(parot17,data)
 }
 ```
 
